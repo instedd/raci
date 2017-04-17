@@ -1,0 +1,31 @@
+= form_for @organization do |f|
+  - if @organization.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@organization.errors.count, "error")} prohibited this organization from being saved:"
+      %ul
+        - @organization.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :legally_formed
+    = f.check_box :legally_formed
+  .field
+    = f.label :email
+    = f.text_field :email
+  .field
+    = f.label :telephone_number
+    = f.text_field :telephone_number
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :twitter
+    = f.text_field :twitter
+  .field
+    = f.label :facebook
+    = f.text_field :facebook
+  .field
+    = f.label :contact
+    = f.text_field :contact
+  .actions
+    = f.submit 'Save'

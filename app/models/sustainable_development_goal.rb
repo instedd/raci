@@ -1,0 +1,2 @@
+class SustainableDevelopmentGoal < ApplicationRecord
+end

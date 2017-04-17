@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Legally formed:
+  = @organization.legally_formed
+%p
+  %b Email:
+  = @organization.email
+%p
+  %b Telephone number:
+  = @organization.telephone_number
+%p
+  %b Name:
+  = @organization.name
+%p
+  %b Twitter:
+  = @organization.twitter
+%p
+  %b Facebook:
+  = @organization.facebook
+%p
+  %b Contact:
+  = @organization.contact
+
+= link_to 'Edit', edit_organization_path(@organization)
+\|
+= link_to 'Back', organizations_path
