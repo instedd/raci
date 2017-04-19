@@ -1,21 +1,42 @@
-%h2 Sign up
+%h2 Registrá tu organización
 = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
   = devise_error_messages!
   .field
-    = f.label :email
+    = f.label :email, "Email para entrar a la plataforma"
     %br/
     = f.email_field :email, autofocus: true
   .field
-    = f.label :password
+    = f.label :password, "Contraseña"
     - if @minimum_password_length
       %em
         (#{@minimum_password_length} characters minimum)
     %br/
     = f.password_field :password, autocomplete: "off"
   .field
-    = f.label :password_confirmation
+    = f.label :password_confirmation, "Reingresar contraseña"
     %br/
     = f.password_field :password_confirmation, autocomplete: "off"
+
+  %h3 Organización
+  = f.fields_for :organization, Organization.new do |org_f|
+    .field
+      = org_f.label :name, "Nombre"
+      = org_f.text_field :name
+    .field
+      = org_f.label :telephone_number, "Número de teléfono"
+      = org_f.text_field :telephone_number
+    .field
+      = org_f.label :email, "Email de contacto"
+      = org_f.text_field :email
+    .field
+      = org_f.label :twitter
+      = org_f.text_field :twitter
+    .field
+      = org_f.label :facebook
+      = org_f.text_field :facebook
+    .field
+      = org_f.label :legally_formed, "Tiene inscripción legal"
+      = org_f.check_box :legally_formed
   .actions
-    = f.submit "Sign up"
+    = f.submit "Registrarse"
 = render "devise/shared/links"

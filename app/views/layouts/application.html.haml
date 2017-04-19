@@ -6,5 +6,12 @@
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  = link_to "Proyectos", projects_path
+  = link_to "Mi organización", organization_path(current_user.organization) if current_user && current_user.organization
   %body
+    - if user_signed_in?
+      = link_to('Logout', destroy_user_session_path, :method => :delete)
+
+    - flash.each do |key, value|
+      %div{:class => "alert alert-#{key}"}= value
     = yield

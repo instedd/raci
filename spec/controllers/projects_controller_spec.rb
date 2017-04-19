@@ -20,7 +20,7 @@ require 'rails_helper'
 
 RSpec.describe ProjectsController, type: :controller do
 
-  let(:user) { User.create(email: 'admin@example.com', password: '12345678') }
+  let(:user) { User.create(email: 'admin@example.com', password: '12345678', confirmed_at: DateTime.now - 3.minutes) }
   let(:organization) { Organization.create(:legally_formed => false,
     :email => "Email",
     :telephone_number => "Telephone Number",

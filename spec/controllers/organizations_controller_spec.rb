@@ -20,7 +20,7 @@ require 'rails_helper'
 
 RSpec.describe OrganizationsController, type: :controller do
 
-  let(:user) { User.create!(email: 'admin@example.com', password: '12345678') }
+  let(:user) { User.create!(email: 'admin@example.com', password: '12345678', confirmed_at: DateTime.now - 3.minutes) }
 
   # This should return the minimal set of attributes required to create a valid
   # Organization. As you add validations to Organization, be sure to
