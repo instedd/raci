@@ -2,16 +2,34 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title Raci
+    %title Objetivos de Desarrollo Sustentable
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-  = link_to "Proyectos", projects_path
-  = link_to "Mi organización", organization_path(current_user.organization) if current_user && current_user.organization
-  %body
-    - if user_signed_in?
-      = link_to('Logout', destroy_user_session_path, :method => :delete)
 
+%body{"data-feedly-mini" => "yes", "data-gr-c-s-loaded" => "true"}
+  %nav.white{:role => "navigation"}
+    .nav-wrapper
+      %a#logo-container.brand-logo{:href => "#"} Logo
+      %ul.right.hide-on-med-and-down
+        = render 'layouts/nav_links'
+      %ul#nav-mobile.side-nav{:style => "transform: translateX(-100%);"}
+        = render 'layouts/nav_links'
+      %a.button-collapse{"data-activates" => "nav-mobile", :href => "#"}
+        %i.material-icons menu
+  .container
     - flash.each do |key, value|
       %div{:class => "alert alert-#{key}"}= value
     = yield
+
+  %footer.page-footer.white
+    .container
+      .row
+        .col.l6.s12
+          © 2017
+        .col.l6.s12.right-align
+          Con el apoyo de
+          = image_tag 'un_logo.jpg', class: 'footer un'
+          = image_tag 'cablevision-logo.svg', class: 'footer'
+          = image_tag 'fibertel-logo.svg', class: 'footer'
+

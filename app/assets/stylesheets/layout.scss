@@ -1,0 +1,25 @@
+nav {
+  box-shadow: none;
+  border-bottom: $secondary-color solid 1px;
+}
+
+@media only screen and (min-width: 993px) {
+  .container {
+    width: 95%;
+    max-width: none;
+  }
+}
+
+footer.page-footer {
+  border-top: $secondary-color solid 1px;
+  color: $footer-font;
+  line-height: 50px;
+  .footer {
+    height: 35px;
+    vertical-align: middle;
+    &.un {
+      margin: 0 20px;
+      height: 50px;
+    }
+  }
+}
