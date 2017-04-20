@@ -9,14 +9,19 @@
 
 %body{"data-feedly-mini" => "yes", "data-gr-c-s-loaded" => "true"}
   %nav.white{:role => "navigation"}
-    .nav-wrapper
-      %a#logo-container.brand-logo{:href => "#"} Logo
-      %ul.right.hide-on-med-and-down
-        = render 'layouts/nav_links'
-      %ul#nav-mobile.side-nav{:style => "transform: translateX(-100%);"}
-        = render 'layouts/nav_links'
-      %a.button-collapse{"data-activates" => "nav-mobile", :href => "#"}
-        %i.material-icons menu
+    .container
+      .nav-wrapper
+        = link_to root_path do
+          #logo-container.brand-logo
+            = image_tag 'RACI-logo.png', class: 'raci'
+            #logo-separator
+            = image_tag 'sdg_logo.png', class: 'sdg'
+        %ul.right.hide-on-med-and-down
+          = render 'layouts/nav_links'
+        %ul#nav-mobile.side-nav{:style => "transform: translateX(-100%);"}
+          = render 'layouts/nav_links'
+        %a.button-collapse{"data-activates" => "nav-mobile", :href => "#"}
+          %i.material-icons menu
   .container
     - flash.each do |key, value|
       %div{:class => "alert alert-#{key}"}= value

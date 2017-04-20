@@ -1,6 +1,24 @@
 nav {
   box-shadow: none;
   border-bottom: $secondary-color solid 1px;
+  min-height: 85px;
+  .brand-logo {
+    margin: 10px 0;
+    img {
+      vertical-align: super;
+      &.raci { height: 36px; }
+      &.sdg {
+        height: 43px;
+        padding-top: 5px;
+      }
+    }
+    #logo-separator {
+      border-left: #C0C0C0 solid 1px;
+      height: 60px;
+      display: inline-block;
+      margin: 0 17px 0 21px;
+    }
+  }
 }
 
 @media only screen and (min-width: 993px) {
@@ -14,12 +32,23 @@ footer.page-footer {
   border-top: $secondary-color solid 1px;
   color: $footer-font;
   line-height: 50px;
-  .footer {
+  position: absolute;
+  bottom: 0;
+  height: auto;
+  width: 100%;
+
+  img.footer {
     height: 35px;
     vertical-align: middle;
+    filter: grayscale(100%) opacity(60%);
+
     &.un {
       margin: 0 20px;
       height: 50px;
     }
   }
+}
+
+h2 {
+  font-size: 24px;
 }

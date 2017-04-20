@@ -26,6 +26,7 @@ class ProjectsController < ApplicationController
   # POST /projects.json
   def create
     @project = Project.new(project_params)
+    @project.organization = current_user.organization
 
     respond_to do |format|
       if @project.save

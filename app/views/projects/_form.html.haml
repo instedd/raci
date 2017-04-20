@@ -1,31 +1,31 @@
-= form_for @project do |f|
-  - if @project.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@project.errors.count, "error")} prohibited this project from being saved:"
-      %ul
-        - @project.errors.full_messages.each do |msg|
-          %li= msg
+.row
+  = form_for @project, class: "col s12" do |f|
+    - if @project.errors.any?
+      #error_explanation
+        %p= "#{pluralize(@project.errors.count, "error")} no permite que se guardara el proyecto"
+        %ul
+          - @project.errors.full_messages.each do |msg|
+            %li= msg
+    .row
+      .input-field.col.s12.m6
+        = f.label :name
+        = f.text_field :name
+    .row
+      .input-field.col.s12.m6
+        = f.label :description
+        = f.text_area :description, class: "materialize-textarea"
+    .row
+      .input-field.col.s12.m6
+        = f.label :location
+        = f.text_field :location
+    .row
+      .input-field.col.s6.m3
+        = f.label :start_date
+        = f.text_field :start_date, class: 'datepicker'
+      .input-field.col.s6.m3
+        = f.label :end_date
+        = f.text_field :end_date, class: 'datepicker'
+    .actions
+      = f.submit 'Guardar', class: 'btn btn-large'
+      = link_to 'Volver', projects_path, class: "btn btn-flat btn-large"
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :description
-    = f.text_area :description
-  .field
-    = f.label :organization_id
-    = f.text_field :organization_id
-  .field
-    = f.label :location
-    = f.text_field :location
-  .field
-    = f.label :start_date
-    = f.date_select :start_date
-  .field
-    = f.label :end_date
-    = f.date_select :end_date
-  .field
-    = f.label :published
-    = f.check_box :published
-  .actions
-    = f.submit 'Save'

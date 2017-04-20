@@ -1,6 +1,11 @@
-%h1 Listing projects
+- if current_user.organization
+  %h2
+    Proyectos de
+    = current_user.organization.name
+- else
+  %h2 Proyectos
 
-%table
+%table.bordered.highlight
   %thead
     %tr
       %th Name

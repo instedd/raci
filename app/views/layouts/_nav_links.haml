@@ -1,0 +1,9 @@
+- if user_signed_in?
+  %li
+    = link_to 'Proyectos', projects_path
+  - if current_user.organization
+    %li
+      = link_to 'Mi organización', organization_path(current_user.organization)
+  %li
+    = link_to "Salir", destroy_user_session_path
+- else
