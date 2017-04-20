@@ -1,0 +1,18 @@
+es:
+  activerecord:
+    models:
+      user: usuario
+      organization: organización
+      project: proyecto
+    attributes:
+      user:
+        password: contraseña
+      organization:
+        name: nombre
+        telephone_number: número de teléfono
+      project:
+        name: nombre
+        start_date: fecha de comienzo
+        end_date: fecha de fin
+        description: descripción
+        location: ubicación
