@@ -1,21 +1,22 @@
-- if current_user.organization
+.title
   %h2
-    Proyectos de
-    = current_user.organization.name
-- else
-  %h2 Proyectos
+    - if current_user.organization
+      Proyectos de
+      = current_user.organization.name
+    - else
+      Proyectos
+    = link_to new_project_path, class: "btn-floating btn-large right" do
+      %i.material-icons add
 
 %table.bordered.highlight
   %thead
     %tr
-      %th Name
-      %th Description
-      %th Organization
-      %th Location
-      %th Start date
-      %th End date
-      %th Published
-      %th
+      %th= Project.human_attribute_name(:name).capitalize
+      %th= Project.human_attribute_name(:description).capitalize
+      %th= Project.human_attribute_name(:location).capitalize
+      %th= Project.human_attribute_name(:start_date).capitalize
+      %th= Project.human_attribute_name(:end_date).capitalize
+      %th= Project.human_attribute_name(:published).capitalize
       %th
       %th
 
@@ -24,15 +25,11 @@
       %tr
         %td= project.name
         %td= project.description
-        %td= project.organization_id
         %td= project.location
         %td= project.start_date
         %td= project.end_date
-        %td= project.published
-        %td= link_to 'Show', project
-        %td= link_to 'Edit', edit_project_path(project)
-        %td= link_to 'Destroy', project, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Project', new_project_path
+        %td
+          - if project.published
+            %i.material-icons check
+        %td= link_to 'Editar', edit_project_path(project)
+        %td= link_to 'Borrar', project, :method => :delete, :data => { :confirm => '¿Borrar este proyecto?' }

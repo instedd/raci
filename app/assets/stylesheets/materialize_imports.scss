@@ -8,13 +8,16 @@
 // Reset
 @import "materialize/components/normalize";
 
+// Materialize overrides
+$primary-color: #E6E6E6;
+$secondary-color: #1C4387;
+$navbar-font-color: #666666;
+
+// Site specific
+$footer-font: $navbar-font-color;
 // Variables;
 @import "materialize/components/variables";
-// Overriding variables:
-$primary-color: color("white","base");
-$secondary-color: #E6E6E6;
-$navbar-font-color: #666666;
-$footer-font: $navbar-font-color;
+
 
 // materialize/components
 @import "materialize/components/global";

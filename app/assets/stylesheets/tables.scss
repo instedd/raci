@@ -1,0 +1,9 @@
+table.bordered {
+  tbody > tr, thead {
+    border-color: $primary-color;
+  }
+}
+
+h2 .btn-floating.btn-large {
+  margin-top: -15px;
+}

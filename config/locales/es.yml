@@ -10,9 +10,12 @@ es:
       organization:
         name: nombre
         telephone_number: número de teléfono
+        legally_formed: ¿tiene inscripción legal?
+        email: email de contacto
       project:
         name: nombre
         start_date: fecha de comienzo
         end_date: fecha de fin
         description: descripción
         location: ubicación
+        published: publicado
