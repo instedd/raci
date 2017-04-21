@@ -1,9 +1,12 @@
 - if user_signed_in?
   %li
     = link_to 'Proyectos', projects_path
-  - if current_user.organization
+  - if current_user.is_admin
+    %li
+      = link_to 'Organizaciones', organizations_path
+  - else
     %li
       = link_to 'Mi organización', edit_organization_path(current_user.organization)
   %li
-    = link_to "Salir", destroy_user_session_path
+    = link_to "Salir", destroy_user_session_path, method: :delete
 - else

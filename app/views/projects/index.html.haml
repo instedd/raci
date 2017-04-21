@@ -17,6 +17,8 @@
       %th= Project.human_attribute_name(:start_date).capitalize
       %th= Project.human_attribute_name(:end_date).capitalize
       %th= Project.human_attribute_name(:published).capitalize
+      - if current_user.is_admin
+        %th
       %th
       %th
 
@@ -29,7 +31,8 @@
         %td= project.start_date
         %td= project.end_date
         %td
-          - if project.published
-            %i.material-icons check
+          - checkmark_icon(project.published)
+        - if current_user.is_admin
+          %td= link_to 'Vista al público', project_path(project)
         %td= link_to 'Editar', edit_project_path(project)
         %td= link_to 'Borrar', project, :method => :delete, :data => { :confirm => '¿Borrar este proyecto?' }

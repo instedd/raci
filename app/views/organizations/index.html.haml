@@ -1,15 +1,17 @@
-%h1 Listing organizations
+.title
+  %h2 Organizaciones
 
-%table
+%table.bordered.highlight
   %thead
     %tr
-      %th Legally formed
-      %th Email
-      %th Telephone number
-      %th Name
-      %th Twitter
-      %th Facebook
-      %th Contact
+      %th= Organization.human_attribute_name(:name).capitalize
+      %th= Organization.human_attribute_name(:email).capitalize
+      %th= Organization.human_attribute_name(:telephone_number).capitalize
+      %th= Organization.human_attribute_name(:legally_formed).capitalize
+      %th= Organization.human_attribute_name(:twitter).capitalize
+      %th= Organization.human_attribute_name(:facebook).capitalize
+      %th= Organization.human_attribute_name(:user).capitalize
+      %th= Organization.human_attribute_name(:accepted).capitalize
       %th
       %th
       %th
@@ -17,17 +19,16 @@
   %tbody
     - @organizations.each do |organization|
       %tr
-        %td= organization.legally_formed
+        %td= organization.name
         %td= organization.email
         %td= organization.telephone_number
-        %td= organization.name
+        %td
+          - checkmark_icon(organization.legally_formed)
         %td= organization.twitter
         %td= organization.facebook
-        %td= organization.user.email
-        %td= link_to 'Show', organization
-        %td= link_to 'Edit', edit_organization_path(organization)
-        %td= link_to 'Destroy', organization, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Organization', new_organization_path
+        %td= "#{organization.user.name} (#{organization.user.email})"
+        %td
+          - checkmark_icon(organization.accepted)
+        %td= link_to 'Vista al público', organization
+        %td= link_to 'Editar', edit_organization_path(organization)
+        %td= link_to 'Borrar', organization, :method => :delete, :data => { :confirm => '¿Borrar esta organización?' }

@@ -6,4 +6,8 @@ class User < ApplicationRecord
 
   has_one :organization, :inverse_of => :user
   accepts_nested_attributes_for :organization
+
+  def is_admin
+    self.admin
+  end
 end

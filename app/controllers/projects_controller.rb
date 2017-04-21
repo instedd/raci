@@ -5,7 +5,11 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all
+    @projects = if current_user.is_admin
+        Project.order(:published)
+      else
+        Project.where(organization_id: current_user.organization.id)
+      end
   end
 
   # GET /projects/1
