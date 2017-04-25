@@ -97,7 +97,7 @@ RSpec.describe ProjectsController, type: :controller do
 
       it "redirects to the created project" do
         post :create, params: {project: valid_attributes}
-        expect(response).to redirect_to(Project.last)
+        expect(response).to redirect_to(projects_path)
       end
     end
 
@@ -136,7 +136,7 @@ RSpec.describe ProjectsController, type: :controller do
       it "redirects to the project" do
         project = Project.create! valid_attributes
         put :update, params: {id: project.to_param, project: valid_attributes}
-        expect(response).to redirect_to(project)
+        expect(response).to redirect_to(projects_path)
       end
     end
 

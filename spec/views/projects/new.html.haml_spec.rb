@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "projects/new", type: :view do
   before(:each) do
-    @user = assign(:user, create_user({email: "admin@example.com", password: "12345678"}))
+    @user = assign(:user, create_user({email: "admin@example.com", password: "12345678", confirmed_at: DateTime.now}))
     sign_in @user
     assign(:project, Project.new(
       :name => "MyString",
@@ -22,11 +22,7 @@ RSpec.describe "projects/new", type: :view do
 
       assert_select "textarea#project_description[name=?]", "project[description]"
 
-      assert_select "input#project_organization_id[name=?]", "project[organization_id]"
-
       assert_select "input#project_location[name=?]", "project[location]"
-
-      assert_select "input#project_published[name=?]", "project[published]"
     end
   end
 end

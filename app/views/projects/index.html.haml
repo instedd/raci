@@ -12,7 +12,6 @@
   %thead
     %tr
       %th= Project.human_attribute_name(:name).capitalize
-      %th= Project.human_attribute_name(:description).capitalize
       %th= Project.human_attribute_name(:location).capitalize
       %th= Project.human_attribute_name(:start_date).capitalize
       %th= Project.human_attribute_name(:end_date).capitalize
@@ -26,7 +25,6 @@
     - @projects.each do |project|
       %tr
         %td= project.name
-        %td= project.description
         %td= project.location
         %td= project.start_date
         %td= project.end_date

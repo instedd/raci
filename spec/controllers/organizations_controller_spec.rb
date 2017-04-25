@@ -135,7 +135,7 @@ RSpec.describe OrganizationsController, type: :controller do
       it "redirects to the organization" do
         organization = Organization.create! valid_attributes
         put :update, params: {id: organization.to_param, organization: valid_attributes}
-        expect(response).to redirect_to(organization)
+        expect(response).to redirect_to(edit_organization_path(organization))
       end
     end
 
