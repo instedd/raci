@@ -6,7 +6,7 @@ class ProjectsController < ApplicationController
   # GET /projects.json
   def index
     @projects = if current_user.is_admin
-        Project.order(:published)
+        Project.order('published DESC')
       else
         Project.where(organization_id: current_user.organization.id)
       end
@@ -46,8 +46,10 @@ class ProjectsController < ApplicationController
   # PATCH/PUT /projects/1
   # PATCH/PUT /projects/1.json
   def update
+    proj = set_publishing_status
+
     respond_to do |format|
-      if @project.update(project_params)
+      if @project.update(proj)
         format.html { redirect_to projects_path, notice: 'Se actualizó el proyecto' }
         format.json { render :show, status: :ok, location: @project }
       else
@@ -76,5 +78,15 @@ class ProjectsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
       params.require(:project).permit(:name, :description, :organization_id, :organization, :location, :start_date, :end_date, :published)
+    end
+
+    def set_publishing_status
+      pj = project_params
+      if params[:commit] == "Publicar"
+        pj[:published] = true
+      elsif params[:commit] == "Ocultar al público"
+        pj[:published] = false
+      end
+      pj
     end
 end

@@ -30,7 +30,7 @@
         %td= project.end_date
         %td
           - checkmark_icon(project.published)
-        - if current_user.is_admin
-          %td= link_to 'Vista al público', project_path(project)
+        /- if current_user.is_admin
+        /  %td= link_to 'Vista al público', project_path(project)
         %td= link_to 'Editar', edit_project_path(project)
         %td= link_to 'Borrar', project, :method => :delete, :data => { :confirm => '¿Borrar este proyecto?' }

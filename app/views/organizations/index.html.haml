@@ -29,6 +29,6 @@
         %td= "#{organization.user.name} (#{organization.user.email})"
         %td
           - checkmark_icon(organization.accepted)
-        %td= link_to 'Vista al público', organization
+        /%td= link_to 'Vista al público', organization
         %td= link_to 'Editar', edit_organization_path(organization)
         %td= link_to 'Borrar', organization, :method => :delete, :data => { :confirm => '¿Borrar esta organización?' }

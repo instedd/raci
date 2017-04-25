@@ -12,6 +12,7 @@ es:
         telephone_number: número de teléfono
         legally_formed: ¿tiene inscripción legal?
         email: email de contacto
+        accepted: aceptada
       project:
         name: nombre
         start_date: fecha de comienzo

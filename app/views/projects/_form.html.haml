@@ -25,7 +25,13 @@
       .input-field.col.s6.m3
         = active_label(f, :end_date, @project)
         = f.text_field :end_date, class: 'datepicker'
-    .actions
-      = f.submit 'Guardar', class: 'btn btn-large'
-      = link_to 'Volver', projects_path, class: "btn btn-flat btn-large"
+    .row
+      .col.s6
+        = f.submit 'Guardar cambios', class: 'btn btn-large'
+        - if current_user.is_admin
+          - if @project.published
+            = f.submit 'Ocultar al público', class: 'btn btn-large danger', :data => { :confirm => '¿Bajar este proyecto del sitio público?' }
+          - else
+            = f.submit 'Publicar', class: 'btn btn-large danger', :data => { :confirm => '¿Publicar proyecto en el sitio público?' } if current_user.is_admin
+        = link_to 'Volver', projects_path, class: "btn btn-flat btn-large"
 
