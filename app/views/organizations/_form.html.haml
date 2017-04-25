@@ -30,5 +30,12 @@
       .input-field.col.s12.m6
         = active_label(f, :facebook, @organization)
         = f.text_field :facebook
-    .actions
-      = f.submit 'Guardar', class: 'btn btn-large'
+    .row
+      .col.s6
+        = f.submit 'Guardar', class: 'btn btn-large'
+        - if current_user.is_admin
+          - if @organization.accepted
+            = f.submit 'Ocultar al público', class: 'btn btn-large danger', :data => { :confirm => '¿Bajar esta organización del sitio público?' }
+          - else
+            = f.submit 'Dar de alta', class: 'btn btn-large danger', :data => { :confirm => '¿Permitir a esta organización subir proyectos?' } if current_user.is_admin
+        = link_to 'Volver', organizations_path, class: "btn btn-flat btn-large"

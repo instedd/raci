@@ -41,8 +41,9 @@ class OrganizationsController < ApplicationController
   # PATCH/PUT /organizations/1
   # PATCH/PUT /organizations/1.json
   def update
+    org = set_acceptance_status
     respond_to do |format|
-      if @organization.update(organization_params)
+      if @organization.update(org)
         format.html { redirect_to edit_organization_path(@organization), notice: 'Se actualizó la organización' }
         format.json { render :show, status: :ok, location: @organization }
       else
@@ -71,5 +72,15 @@ class OrganizationsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def organization_params
       params.require(:organization).permit(:legally_formed, :email, :telephone_number, :name, :twitter, :facebook, :user_id, :user)
+    end
+
+    def set_acceptance_status
+      org = organization_params
+      if params[:commit] == "Dar de alta"
+        org[:accepted] = true
+      elsif params[:commit] == "Ocultar al público"
+        org[:accepted] = false
+      end
+      org
     end
 end
