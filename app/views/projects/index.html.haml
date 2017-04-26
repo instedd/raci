@@ -1,10 +1,10 @@
 .title
   %h2
-    - if current_user.organization
+    - if current_user.is_admin
+      Proyectos
+    - else
       Proyectos de
       = current_user.organization.name
-    - else
-      Proyectos
     = link_to new_project_path, class: "btn-floating btn-large right" do
       %i.material-icons add
 

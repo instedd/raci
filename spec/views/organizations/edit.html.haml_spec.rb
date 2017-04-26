@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "organizations/edit", type: :view do
   before(:each) do
-    @user = assign(:user, create_user({email: "admin@example.com", password: "12345678"}))
+    @user = assign(:user, create_user({email: "admin@example.com", password: "12345678", confirmed_at: DateTime.now}))
     sign_in @user
     @organization = assign(:organization, Organization.create!(
       :legally_formed => false,

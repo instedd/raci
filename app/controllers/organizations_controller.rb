@@ -1,6 +1,8 @@
 class OrganizationsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_organization, only: [:show, :edit, :update, :destroy]
+  before_action :verify_ownership, only: [:edit, :update]
+  before_action :authorize_user, only: :index
 
   # GET /organizations
   # GET /organizations.json
@@ -11,11 +13,6 @@ class OrganizationsController < ApplicationController
   # GET /organizations/1
   # GET /organizations/1.json
   def show
-  end
-
-  # GET /organizations/new
-  def new
-    @organization = Organization.new
   end
 
   # GET /organizations/1/edit
@@ -82,5 +79,11 @@ class OrganizationsController < ApplicationController
         org[:accepted] = false
       end
       org
+    end
+
+    def verify_ownership
+      if current_user.organization != @organization
+        head :forbidden
+      end
     end
 end

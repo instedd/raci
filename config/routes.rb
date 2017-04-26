@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :projects
-  resources :organizations
+  resources :organizations, except: [:new]
   devise_for :users
 
   root 'projects#index'

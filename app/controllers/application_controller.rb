@@ -3,6 +3,12 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  def authorize_user
+    if !current_user.is_admin
+      head :forbidden
+    end
+  end
+
   protected
 
   def configure_permitted_parameters

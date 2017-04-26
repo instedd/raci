@@ -1,6 +1,8 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :verify_ownership, only: [:edit, :update]
+  before_action :verify_organization, except: :show
 
   # GET /projects
   # GET /projects.json
@@ -88,5 +90,17 @@ class ProjectsController < ApplicationController
         pj[:published] = false
       end
       pj
+    end
+
+    def verify_organization
+      if !current_user.is_admin && !current_user.organization.accepted
+        render 'organizations/not_authorized'
+      end
+    end
+
+    def verify_ownership
+      if !current_user.is_admin && current_user.organization != @project.organization
+        head :forbidden
+      end
     end
 end
