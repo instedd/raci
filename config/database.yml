@@ -76,10 +76,10 @@ test:
 # You can use this database configuration with:
 #
 production:
+  <<: *default
   url: <%= ENV['DATABASE_URL'] %>
 #
 # production:
-#   <<: *default
 #   database: raci_production
 #   username: raci
 #   password: <%= ENV['RACI_DATABASE_PASSWORD'] %>
