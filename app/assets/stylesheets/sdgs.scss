@@ -1,0 +1,137 @@
+// For ODS logos
+#sdg-icons {
+  display: none;
+}
+
+// fill within the use - color for paths
+// color within use - color for back
+// Help: https://tympanus.net/codrops/2015/07/16/styling-svg-use-content-css/
+// (under Using the CSS currentColor Variable For Styling <use> Content)
+use.menu-item { fill: #ffffff; }
+use.inverted { color: #ffffff; }
+.ods1 {
+  background-color: #E5243B;
+  use.inverted { fill: #E5243B }
+}
+.ods2 {
+  background-color: #dda63a;
+  use.inverted { fill: #dda63a }
+}
+.ods3 {
+  background-color: #4c9f38;
+  use.inverted { fill: #4c9f38 }
+}
+.ods4 {
+  background-color: #C5192D;
+  use.inverted { fill: #C5192D }
+}
+.ods5 {
+  background-color: #ff3a21;
+  use.inverted { fill: #ff3a21 }
+}
+.ods6 {
+  background-color: #26bde2;
+  use.inverted { fill: #26bde2 }
+}
+.ods7 {
+  background-color: #fcc30b;
+  use.inverted { fill: #fcc30b }
+}
+.ods8 {
+  background-color: #a21942;
+  use.inverted { fill: #a21942 }
+}
+.ods9 {
+  background-color: #fd6925;
+  use.inverted { fill: #fd6925 }
+}
+.ods10 {
+  background-color: #dd1367;
+  use.inverted { fill: #dd1367 }
+}
+.ods11 {
+  background-color: #fd9d24;
+  use.inverted { fill: #fd9d24 }
+}
+.ods12 {
+  background-color: #bf8b2e;
+  use.inverted { fill: #bf8b2e }
+}
+.ods13 {
+  background-color: #3f7e44;
+  use.inverted { fill: #3f7e44 }
+}
+.ods14 {
+  background-color: #0a97d9;
+  use.inverted { fill: #0a97d9 }
+}
+.ods15 {
+  background-color: #56c02b;
+  use.inverted { fill: #56c02b }
+}
+.ods16 {
+  background-color: #00689d;
+  use.inverted { fill: #00689d }
+}
+.ods17 {
+  background-color: #19486a;
+  use.inverted { fill: #19486a }
+}
+
+.ods1-menu { use.menu-item { color: #E5243B; } }
+.ods2-menu { use.menu-item { color: #dda63a; } }
+.ods3-menu { use.menu-item { color: #4c9f38; } }
+.ods4-menu { use.menu-item { color: #C5192D; } }
+.ods5-menu { use.menu-item { color: #ff3a21; } }
+.ods6-menu { use.menu-item { color: #26bde2; } }
+.ods7-menu { use.menu-item { color: #fcc30b; } }
+.ods8-menu { use.menu-item { color: #a21942; } }
+.ods9-menu { use.menu-item { color: #fd6925; } }
+.ods10-menu { use.menu-item { color: #dd1367; } }
+.ods11-menu { use.menu-item { color: #fd9d24; } }
+.ods12-menu { use.menu-item { color: #bf8b2e; } }
+.ods13-menu { use.menu-item { color: #3f7e44; } }
+.ods14-menu { use.menu-item { color: #0a97d9; } }
+.ods15-menu { use.menu-item { color: #56c02b; } }
+.ods16-menu { use.menu-item { color: #00689d; } }
+.ods17-menu { use.menu-item { color: #19486a; } }
+
+
+.container.c-sustainable_development_goals {
+  width: 100%;
+}
+
+.sdg-header {
+  width: 100%;
+  color: $light-font;
+
+  .row {
+    padding: 30px;
+  }
+  svg.logo {
+    height: 90%;
+
+  }
+  .title {
+    font-size: 30px;
+  }
+  .lead {
+    padding: 20px 0;
+  }
+}
+
+#sdg-menu {
+  margin-bottom: 0;
+  margin-top: 5px;
+  text-align:center;
+}
+.menu {
+  a.menu-link {
+    margin-right: -2px;
+  }
+
+  svg {
+    height: 75px;
+    width: 75px;
+  }
+}

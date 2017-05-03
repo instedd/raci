@@ -23,10 +23,12 @@
             = render 'layouts/nav_links'
           %a.button-collapse{"data-activates" => "nav-mobile", :href => "#"}
             %i.material-icons menu
-    .container
+    - goal = @goal ? "body-ods#{@goal.number}" : ""
+    .container{class: "c-#{params[:controller]} #{goal}"}
+      = render 'shared/ods_logos'
       - flash.each do |key, value|
         %div{:class => "alert alert-#{key}"}= value
-      = yield
+      = content_for?(:main) ? yield(:main) : yield
 
   %footer.page-footer.white
     .container

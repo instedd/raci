@@ -1,0 +1,10 @@
+- content_for :main do
+  .row#sdg-menu
+    .col.s12
+      #menu.menu
+        - SustainableDevelopmentGoal.all.each do |goal|
+          = link_to goal_path(goal.url), class: 'menu-link' do
+            %svg{class: "ods#{goal.number}-menu"}
+              %use.menu-item{"xlink:href" => "#ODS#{goal.number}"}
+  = yield
+= render template: "layouts/application"
