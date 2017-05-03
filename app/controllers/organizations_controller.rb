@@ -82,7 +82,7 @@ class OrganizationsController < ApplicationController
     end
 
     def verify_ownership
-      if current_user.organization != @organization
+      if !current_user.is_admin && current_user.organization != @organization
         head :forbidden
       end
     end
