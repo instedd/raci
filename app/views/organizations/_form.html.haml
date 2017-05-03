@@ -38,4 +38,4 @@
             = f.submit 'Ocultar al público', class: 'btn btn-large danger', :data => { :confirm => '¿Bajar esta organización del sitio público?' }
           - else
             = f.submit 'Dar de alta', class: 'btn btn-large danger', :data => { :confirm => '¿Permitir a esta organización subir proyectos?' } if current_user.is_admin
-        = link_to 'Volver', organizations_path, class: "btn btn-flat btn-large"
+          = link_to 'Volver', organizations_path, class: "btn btn-flat btn-large"
