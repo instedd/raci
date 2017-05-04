@@ -22,12 +22,24 @@ form {
   line-height: 100px;
 }
 
-.input-field{
+.input-field {
   label.active[data-hint]::after {
     content: attr(data-hint);
     display: block;
     position: absolute;
-    width: 120px;
+    width: 150px;
     top: 60px;
+    transition: none;
   }
+}
+
+#login_settings {
+  display: -webkit-inline-flex;
+  display: inline-flex;
+  -webkit-align-items: flex-end;
+  align-items: flex-end;
+  width:66.66667%;
+    & div:first-child {
+      flex-shrink: 2;
+    }
 }
