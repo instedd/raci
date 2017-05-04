@@ -35,9 +35,8 @@
           = org_f.text_field :facebook
         .row
           .input-field.col.s12.m6.checkbox
-            = org_f.label :legally_formed, "Tiene inscripción legal"
             = org_f.check_box :legally_formed
+            = org_f.label :legally_formed, "Tiene inscripción legal"
       .actions
         = f.submit "Registrarse", class: 'btn btn-large'
-.row
-  = render "devise/shared/links"
+        = link_to "Iniciar Sesión", new_user_session_path, class: "btn btn-flat btn-large"
