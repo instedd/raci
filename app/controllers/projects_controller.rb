@@ -31,7 +31,9 @@ class ProjectsController < ApplicationController
   # POST /projects
   # POST /projects.json
   def create
-    @project = Project.new(project_params)
+    new_params = project_params
+    new_params["project_goals"] = project_params["project_goals"].map{|id| ProjectGoal.new(goal: id)} if project_params["project_goals"]
+    @project = Project.new(new_params)
     @project.organization = current_user.organization
 
     respond_to do |format|
@@ -49,6 +51,8 @@ class ProjectsController < ApplicationController
   # PATCH/PUT /projects/1.json
   def update
     proj = set_publishing_status
+    proj["project_goals"] = proj["project_goals"].select{|id| !@project.for_goal?(id) }
+      .map{|id| ProjectGoal.new(project_id: @project.id, goal: id)} if project_params["project_goals"]
 
     respond_to do |format|
       if @project.update(proj)
@@ -71,6 +75,10 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def public
+    @projects = Project.eager_load(:organization)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_project
@@ -79,7 +87,7 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:name, :description, :organization_id, :organization, :location, :start_date, :end_date, :published)
+      params.require(:project).permit(:name, :description, :organization_id, :organization, :location, :start_date, :end_date, project_goals: [])
     end
 
     def set_publishing_status

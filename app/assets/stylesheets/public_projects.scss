@@ -1,0 +1,14 @@
+#project-line {
+  border-bottom: 1px solid $primary-color;
+  .title {
+    font-size: 36px;
+    display: inline-block;
+  }
+  .organization {
+    color: $secondary-font-color;
+    display: inline-block;
+  }
+  #contact-details, .project-details {
+    color: $secondary-font-color;
+  }
+}

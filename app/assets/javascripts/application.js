@@ -17,7 +17,7 @@
 //= require_tree .
 
 
-$().ready( function() {
+$(document).on('turbolinks:load', function() {
 
   $('.datepicker').pickadate({
     selectMonths: true, // Creates a dropdown to control month

@@ -1,0 +1,42 @@
+= pluralize(@projects.count, "proyecto")
+- @projects.each do |project|
+  - org = project.organization
+  .row#project-line
+    .col.m2.hide-on-small-only
+      IMG
+    .col.m8
+      .row
+        .col.s12
+          .title= project.name
+          .organization= "de #{org.name}"
+      .row
+        .col.s12.sdgs
+      .row
+        .col.s12
+          = project.description
+      .row.project-details
+        .col.s12
+          %i.material-icons location_on
+          = project.location
+          %i.material-icons people
+          %i.material-icons today
+          = project.start_date.try(:year)
+          \-
+          = project.end_date.try(:year)
+    #contact-details.col.m2.hide-on-small-only
+      .row
+        .col.s12
+          %i.material-icons email
+          = org.email
+      .row
+        .col.s12
+          %i.material-icons phone
+          = org.telephone_number
+      .row
+        .col.s12
+          %i.material-icons email
+          = org.twitter
+      .row
+        .col.s12
+          %i.material-icons email
+          = org.facebook
