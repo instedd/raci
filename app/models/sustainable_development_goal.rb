@@ -2,7 +2,7 @@ class SustainableDevelopmentGoal < ApplicationRecord
 
   attr_accessor :url
   attr_accessor :number
-  attr_accessor :color
+  attr_accessor :name
 
   def self.all
     [

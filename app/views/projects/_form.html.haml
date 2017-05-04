@@ -33,12 +33,14 @@
           - SustainableDevelopmentGoal.all[0..8].each do |goal|
             %p
               = check_box_tag "project[project_goals][]", goal.number, @project.for_goal?(goal.number), id: "project_goals_#{goal.number}"
-              %label{for: "project_goals_#{goal.number}"}= goal.name
+              %label{for: "project_goals_#{goal.number}"}
+                - inline_sdg(goal)
         .col.s6.m3
           - SustainableDevelopmentGoal.all[9..16].each do |goal|
             %p
               = check_box_tag "project[project_goals][]", goal.number, @project.for_goal?(goal.number), id: "project_goals_#{goal.number}"
-              %label{for: "project_goals_#{goal.number}"}= goal.name
+              %label{for: "project_goals_#{goal.number}"}
+                - inline_sdg(goal)
     .row
       .col.s6
         = f.submit 'Guardar cambios', class: 'btn btn-large'

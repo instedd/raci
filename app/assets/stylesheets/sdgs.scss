@@ -1,3 +1,22 @@
+// Colors
+$ods1: #E5243B;
+$ods2: #dda63a;
+$ods3: #4c9f38;
+$ods4: #C5192D;
+$ods5: #ff3a21;
+$ods6: #26bde2;
+$ods7: #fcc30b;
+$ods8: #a21942;
+$ods9: #fd6925;
+$ods10: #dd1367;
+$ods11: #fd9d24;
+$ods12: #bf8b2e;
+$ods13: #3f7e44;
+$ods14: #0a97d9;
+$ods15: #56c02b;
+$ods16: #00689d;
+$ods17: #19486a;
+
 // For ODS logos
 #sdg-icons {
   display: none;
@@ -10,91 +29,120 @@
 use.menu-item { fill: #ffffff; }
 use.inverted { color: #ffffff; }
 .ods1 {
-  background-color: #E5243B;
-  use.inverted { fill: #E5243B }
+  background-color: $ods1;
+  use.inverted { fill: $ods1; }
 }
 .ods2 {
-  background-color: #dda63a;
-  use.inverted { fill: #dda63a }
+  background-color: $ods2;
+  use.inverted { fill: $ods2; }
 }
 .ods3 {
-  background-color: #4c9f38;
-  use.inverted { fill: #4c9f38 }
+  background-color: $ods3;
+  use.inverted { fill: $ods3; }
 }
 .ods4 {
-  background-color: #C5192D;
-  use.inverted { fill: #C5192D }
+  background-color: $ods4;
+  use.inverted { fill: $ods4; }
 }
 .ods5 {
-  background-color: #ff3a21;
-  use.inverted { fill: #ff3a21 }
+  background-color: $ods5;
+  use.inverted { fill: $ods5; }
 }
 .ods6 {
-  background-color: #26bde2;
-  use.inverted { fill: #26bde2 }
+  background-color: $ods6;
+  use.inverted { fill: $ods6; }
 }
 .ods7 {
-  background-color: #fcc30b;
-  use.inverted { fill: #fcc30b }
+  background-color: $ods7;
+  use.inverted { fill: $ods7; }
 }
 .ods8 {
-  background-color: #a21942;
-  use.inverted { fill: #a21942 }
+  background-color: $ods8;
+  use.inverted { fill: $ods8; }
 }
 .ods9 {
-  background-color: #fd6925;
-  use.inverted { fill: #fd6925 }
+  background-color: $ods9;
+  use.inverted { fill: $ods9; }
 }
 .ods10 {
-  background-color: #dd1367;
-  use.inverted { fill: #dd1367 }
+  background-color: $ods10;
+  use.inverted { fill: $ods10; }
 }
 .ods11 {
-  background-color: #fd9d24;
-  use.inverted { fill: #fd9d24 }
+  background-color: $ods11;
+  use.inverted { fill: $ods11; }
 }
 .ods12 {
-  background-color: #bf8b2e;
-  use.inverted { fill: #bf8b2e }
+  background-color: $ods12;
+  use.inverted { fill: $ods12; }
 }
 .ods13 {
-  background-color: #3f7e44;
-  use.inverted { fill: #3f7e44 }
+  background-color: $ods13;
+  use.inverted { fill: $ods13; }
 }
 .ods14 {
-  background-color: #0a97d9;
-  use.inverted { fill: #0a97d9 }
+  background-color: $ods14;
+  use.inverted { fill: $ods14; }
 }
 .ods15 {
-  background-color: #56c02b;
-  use.inverted { fill: #56c02b }
+  background-color: $ods15;
+  use.inverted { fill: $ods15; }
 }
 .ods16 {
-  background-color: #00689d;
-  use.inverted { fill: #00689d }
+  background-color: $ods16;
+  use.inverted { fill: $ods16; }
 }
 .ods17 {
-  background-color: #19486a;
-  use.inverted { fill: #19486a }
+  background-color: $ods17;
+  use.inverted { fill: $ods17; }
 }
 
-.ods1-menu { use.menu-item { color: #E5243B; } }
-.ods2-menu { use.menu-item { color: #dda63a; } }
-.ods3-menu { use.menu-item { color: #4c9f38; } }
-.ods4-menu { use.menu-item { color: #C5192D; } }
-.ods5-menu { use.menu-item { color: #ff3a21; } }
-.ods6-menu { use.menu-item { color: #26bde2; } }
-.ods7-menu { use.menu-item { color: #fcc30b; } }
-.ods8-menu { use.menu-item { color: #a21942; } }
-.ods9-menu { use.menu-item { color: #fd6925; } }
-.ods10-menu { use.menu-item { color: #dd1367; } }
-.ods11-menu { use.menu-item { color: #fd9d24; } }
-.ods12-menu { use.menu-item { color: #bf8b2e; } }
-.ods13-menu { use.menu-item { color: #3f7e44; } }
-.ods14-menu { use.menu-item { color: #0a97d9; } }
-.ods15-menu { use.menu-item { color: #56c02b; } }
-.ods16-menu { use.menu-item { color: #00689d; } }
-.ods17-menu { use.menu-item { color: #19486a; } }
+.ods1-menu { use.menu-item { color: $ods1; } }
+.ods2-menu { use.menu-item { color: $ods2; } }
+.ods3-menu { use.menu-item { color: $ods3; } }
+.ods4-menu { use.menu-item { color: $ods4; } }
+.ods5-menu { use.menu-item { color: $ods5; } }
+.ods6-menu { use.menu-item { color: $ods6; } }
+.ods7-menu { use.menu-item { color: $ods7; } }
+.ods8-menu { use.menu-item { color: $ods8; } }
+.ods9-menu { use.menu-item { color: $ods9; } }
+.ods10-menu { use.menu-item { color: $ods10; } }
+.ods11-menu { use.menu-item { color: $ods11; } }
+.ods12-menu { use.menu-item { color: $ods12; } }
+.ods13-menu { use.menu-item { color: $ods13; } }
+.ods14-menu { use.menu-item { color: $ods14; } }
+.ods15-menu { use.menu-item { color: $ods15; } }
+.ods16-menu { use.menu-item { color: $ods16; } }
+.ods17-menu { use.menu-item { color: $ods17; } }
+
+.sdg_badge {
+  min-width: 3rem;
+  padding: 3px 6px;
+  text-align: center;
+  height: 22px;
+  box-sizing: border-box;
+  border-radius: 2px;
+  font-size: 0.8rem;
+  color: #ffffff;
+}
+.font-sdg1 { color: $ods1; }
+.font-sdg2 { color: $ods2; }
+.font-sdg3 { color: $ods3; }
+.font-sdg4 { color: $ods4; }
+.font-sdg5 { color: $ods5; }
+.font-sdg6 { color: $ods6; }
+.font-sdg7 { color: $ods7; }
+.font-sdg8 { color: $ods8; }
+.font-sdg9 { color: $ods9; }
+.font-sdg10 { color: $ods10; }
+.font-sdg11 { color: $ods11; }
+.font-sdg12 { color: $ods12; }
+.font-sdg13 { color: $ods13; }
+.font-sdg14 { color: $ods14; }
+.font-sdg15 { color: $ods15; }
+.font-sdg16 { color: $ods16; }
+.font-sdg17 { color: $ods17; }
+
 
 
 .container.c-sustainable_development_goals {

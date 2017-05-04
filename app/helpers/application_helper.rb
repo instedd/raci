@@ -32,4 +32,16 @@ module ApplicationHelper
       end
     end
   end
+
+  def pp_sdg(goal)
+    haml_tag :div, class: "sdg-name" do
+      haml_tag :span, goal.number, class: "sdg_badge ods#{goal.number}"
+      haml_tag :span, goal.name, class: "font-sdg#{goal.number}"
+    end
+  end
+
+  def inline_sdg(goal)
+    haml_tag :span, goal.name, class: "font-sdg#{goal.number}"
+    haml_tag :span, goal.number, class: "sdg_badge ods#{goal.number}"
+  end
 end

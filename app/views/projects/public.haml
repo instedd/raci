@@ -11,6 +11,8 @@
           .organization= "de #{org.name}"
       .row
         .col.s12.sdgs
+          - project.project_goals.map{|pg| pg.sustainable_development_goal }.each do |goal|
+            - pp_sdg(goal)
       .row
         .col.s12
           = project.description
