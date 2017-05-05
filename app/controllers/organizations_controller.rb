@@ -39,6 +39,13 @@ class OrganizationsController < ApplicationController
   # PATCH/PUT /organizations/1.json
   def update
     org = set_acceptance_status
+    if org[:logo]
+      name = @organization.name.split(" ").join("_") + "_" + organization_params[:logo].original_filename
+      File.open(Rails.root.join('public', 'uploads', name), 'wb') do |file|
+        file.write(organization_params[:logo].read)
+      end
+      org[:logo] = name
+    end
     respond_to do |format|
       if @organization.update(org)
         format.html { redirect_to edit_organization_path(@organization), notice: 'Se actualizó la organización' }
@@ -68,7 +75,7 @@ class OrganizationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def organization_params
-      params.require(:organization).permit(:legally_formed, :email, :telephone_number, :name, :twitter, :facebook, :user_id, :user)
+      params.require(:organization).permit(:legally_formed, :email, :telephone_number, :name, :twitter, :facebook, :user_id, :user, :logo)
     end
 
     def set_acceptance_status

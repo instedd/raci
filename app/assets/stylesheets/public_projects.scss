@@ -1,18 +1,33 @@
 #project-line {
+  min-height: 225px;
+  margin-bottom: 30px;
   border-bottom: 1px solid $primary-color;
   .title {
     font-size: 36px;
     display: inline-block;
+    a {color: black;}
   }
   .organization {
     color: $secondary-font-color;
     display: inline-block;
+    a { color: $secondary-font-color; }
   }
   #contact-details, .project-details {
     color: $secondary-font-color;
   }
+  #contact-details .row {
+    margin-bottom: 0;
+    margin-top: 5px;
+  }
   .sdg-name {
     margin-right: 10px;
     display: inline-block;
+  }
+  .row#title {
+    margin-bottom: 0;
+  }
+  .org-logo {
+    width: 192px;
+    height: 192px;
   }
 }

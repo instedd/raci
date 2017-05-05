@@ -31,6 +31,21 @@
         = active_label(f, :facebook, @organization)
         = f.text_field :facebook
     .row
+      .file-field.input-field.col.s12.m6
+        = f.label :logo, "Logo (Por favor, subir una imagen cuadrada)", class: "active"
+        %br/
+        .btn
+          %span Subir
+          = f.file_field :logo
+        .file-path-wrapper
+          %input.file-path.validate
+    - if @organization.logo
+      .row
+        .col.s12.m6
+          Así es como se va a ver el logo de tu organización.
+          Por favor asegurate de que la imagen sea cuadrada y esté en buena calidad.
+          %p= image_tag "/uploads/#{@organization.logo}", width: "190", height: "190"
+    .row
       .col.s6
         = f.submit 'Guardar', class: 'btn btn-large'
         - if current_user.is_admin

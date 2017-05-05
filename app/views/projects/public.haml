@@ -2,13 +2,15 @@
 - @projects.each do |project|
   - org = project.organization
   .row#project-line
-    .col.m2.hide-on-small-only
-      IMG
+    .col.m2.hide-on-med-and-down
+      = image_tag "/uploads/#{org.logo}", class: "org-logo" if org.logo
     .col.m8
-      .row
+      .row#title
         .col.s12
-          .title= project.name
-          .organization= "de #{org.name}"
+          .title= link_to project.name, project_path(project)
+          .organization
+            de
+            = link_to org.name, organization_path(org)
       .row
         .col.s12.sdgs
           - project.project_goals.map{|pg| pg.sustainable_development_goal }.each do |goal|
@@ -17,15 +19,20 @@
         .col.s12
           = project.description
       .row.project-details
-        .col.s12
+        .col.s4
           %i.material-icons location_on
           = project.location
+        .col.s4
           %i.material-icons people
+        .col.s4
           %i.material-icons today
-          = project.start_date.try(:year)
-          \-
-          = project.end_date.try(:year)
-    #contact-details.col.m2.hide-on-small-only
+          - if project.start_date.try(:year) == project.end_date.try(:year)
+            = project.start_date.try(:year)
+          - else
+            = project.start_date.try(:year)
+            \-
+            = project.end_date.try(:year)
+    #contact-details.col.m2.hide-on-med-and-down
       .row
         .col.s12
           %i.material-icons email
