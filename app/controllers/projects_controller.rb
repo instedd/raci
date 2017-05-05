@@ -32,7 +32,7 @@ class ProjectsController < ApplicationController
   # POST /projects.json
   def create
     new_params = project_params
-    new_params["project_goals"] = project_params["project_goals"].map{|id| ProjectGoal.new(goal: id)} if project_params["project_goals"]
+    new_params = parse_project_goals(new_params)
     @project = Project.new(new_params)
     @project.organization = current_user.organization
 
@@ -51,8 +51,7 @@ class ProjectsController < ApplicationController
   # PATCH/PUT /projects/1.json
   def update
     proj = set_publishing_status
-    proj["project_goals"] = proj["project_goals"].select{|id| !@project.for_goal?(id) }
-      .map{|id| ProjectGoal.new(project_id: @project.id, goal: id)} if project_params["project_goals"]
+    proj = parse_project_goals(proj)
 
     respond_to do |format|
       if @project.update(proj)
@@ -76,7 +75,7 @@ class ProjectsController < ApplicationController
   end
 
   def public
-    @projects = Project.eager_load(:organization)
+    @projects = Project.published.eager_load(:organization)
   end
 
   private
@@ -98,6 +97,12 @@ class ProjectsController < ApplicationController
         pj[:published] = false
       end
       pj
+    end
+
+    def parse_project_goals(params)
+      params["project_goals"] = params["project_goals"]
+        .map{|id| ProjectGoal.new(project_id: @project.id, goal: id)} if params["project_goals"]
+      params
     end
 
     def verify_organization
