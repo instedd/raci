@@ -17,7 +17,8 @@
             #logo-container.brand-logo
               = image_tag 'RACI-logo.png', class: 'raci'
               #logo-separator
-              = image_tag 'sdg_logo.png', class: 'sdg'
+              = image_tag 'sdg_logo.png', class: 'sdg hide-on-small-only'
+              = image_tag 'sdg_logo_mobile.png', class: 'sdg-mobile hide-on-med-and-up'
           %ul.right.hide-on-med-and-down
             = render 'layouts/nav_links'
           %ul#nav-mobile.side-nav{:style => "transform: translateX(-100%);"}
