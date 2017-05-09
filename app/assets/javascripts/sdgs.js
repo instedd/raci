@@ -1,11 +1,8 @@
-function resize_menu() {
-  console.log('HERE')
-  w = window.innerWidth
-  // Between 1 and 2px spacing randomly decided by broswer
-  side = w / 17 - 2
+function resize_menu(margin, spacing, selector, containerProportion = 1) {
+  w = window.innerWidth * containerProportion - margin
+  side = w / 17 - spacing
 
-  $('a.menu-link svg').each(function(i,el){
-    // debugger;
+  $(selector).each(function(i,el){
     el.style.width = String(side) + "px"
     el.style.height = String(side) + "px"
   })
@@ -14,7 +11,18 @@ function resize_menu() {
 $(document).on('turbolinks:load', function() {
 
   if($('.c-sustainable_development_goals').length > 0) {
-    resize_menu()
+    // Between 1 and 2px spacing randomly decided by broswer
+    resize_menu(0, 2, 'a.menu-link svg')
+    window.onresize = function() {
+      resize_menu(0, 2, 'a.menu-link svg')
+    }
   }
-  window.onresize = resize_menu
+
+  if($('#filters').length > 0) {
+    resize_menu(40, 7, 'a.filter-menu svg', 0.9)
+    window.onresize = function() {
+      resize_menu(40, 7, 'a.filter-menu svg', 0.9)
+    }
+  }
+
 })

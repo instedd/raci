@@ -5,6 +5,10 @@ module ApplicationHelper
     form.label field, options
   end
 
+  def active_label_tag(field, label, instance)
+    label_tag field, label, class: instance.send(field).blank? ? "" : "active"
+  end
+
   def checkmark_icon(yes)
     if yes
       haml_tag :i, "check", class: 'material-icons'

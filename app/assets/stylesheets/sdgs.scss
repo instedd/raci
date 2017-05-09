@@ -97,23 +97,23 @@ use.inverted { color: #ffffff; }
   use.inverted { fill: $ods17; }
 }
 
-.ods1-menu { use.menu-item { color: $ods1; } }
-.ods2-menu { use.menu-item { color: $ods2; } }
-.ods3-menu { use.menu-item { color: $ods3; } }
-.ods4-menu { use.menu-item { color: $ods4; } }
-.ods5-menu { use.menu-item { color: $ods5; } }
-.ods6-menu { use.menu-item { color: $ods6; } }
-.ods7-menu { use.menu-item { color: $ods7; } }
-.ods8-menu { use.menu-item { color: $ods8; } }
-.ods9-menu { use.menu-item { color: $ods9; } }
-.ods10-menu { use.menu-item { color: $ods10; } }
-.ods11-menu { use.menu-item { color: $ods11; } }
-.ods12-menu { use.menu-item { color: $ods12; } }
-.ods13-menu { use.menu-item { color: $ods13; } }
-.ods14-menu { use.menu-item { color: $ods14; } }
-.ods15-menu { use.menu-item { color: $ods15; } }
-.ods16-menu { use.menu-item { color: $ods16; } }
-.ods17-menu { use.menu-item { color: $ods17; } }
+.ods1-menu { use.menu-item { color: $ods1; }; use.menu-item.inactive { color: $primary-color; } }
+.ods2-menu { use.menu-item { color: $ods2; }; use.menu-item.inactive { color: $primary-color; } }
+.ods3-menu { use.menu-item { color: $ods3; }; use.menu-item.inactive { color: $primary-color; } }
+.ods4-menu { use.menu-item { color: $ods4; }; use.menu-item.inactive { color: $primary-color; } }
+.ods5-menu { use.menu-item { color: $ods5; }; use.menu-item.inactive { color: $primary-color; } }
+.ods6-menu { use.menu-item { color: $ods6; }; use.menu-item.inactive { color: $primary-color; } }
+.ods7-menu { use.menu-item { color: $ods7; }; use.menu-item.inactive { color: $primary-color; } }
+.ods8-menu { use.menu-item { color: $ods8; }; use.menu-item.inactive { color: $primary-color; } }
+.ods9-menu { use.menu-item { color: $ods9; }; use.menu-item.inactive { color: $primary-color; } }
+.ods10-menu { use.menu-item { color: $ods10; }; use.menu-item.inactive { color: $primary-color; } }
+.ods11-menu { use.menu-item { color: $ods11; }; use.menu-item.inactive { color: $primary-color; } }
+.ods12-menu { use.menu-item { color: $ods12; }; use.menu-item.inactive { color: $primary-color; } }
+.ods13-menu { use.menu-item { color: $ods13; }; use.menu-item.inactive { color: $primary-color; } }
+.ods14-menu { use.menu-item { color: $ods14; }; use.menu-item.inactive { color: $primary-color; } }
+.ods15-menu { use.menu-item { color: $ods15; }; use.menu-item.inactive { color: $primary-color; } }
+.ods16-menu { use.menu-item { color: $ods16; }; use.menu-item.inactive { color: $primary-color; } }
+.ods17-menu { use.menu-item { color: $ods17; }; use.menu-item.inactive { color: $primary-color; } }
 
 .sdg_badge {
   min-width: 3rem;

@@ -1,6 +1,7 @@
-#project-line {
+.project-line {
   min-height: 225px;
   margin-bottom: 30px;
+  padding-bottom: 30px;
   border-bottom: 1px solid $primary-color;
   .title {
     font-size: 36px;
@@ -29,5 +30,41 @@
   .org-logo {
     width: 192px;
     height: 192px;
+    margin-top: 10px;
   }
+}
+
+#filters {
+  color: $secondary-font-color;
+  border-bottom: 1px solid $primary-color;
+  .filter-menu svg {
+    height: 75px;
+    width: 75px;
+    margin-right: 6px;
+  }
+
+  #sdg-filters {
+    margin: 20px;
+    .menu-item {
+      margin-right: 6px;
+    }
+  }
+
+  .input-field .prefix ~ label {
+    margin-left: 2rem;
+  }
+  .input-field .prefix ~ input {
+    margin-left: 2rem;
+  }
+  .input-field .prefix {
+    bottom: 33px;
+    font-size: 1.5rem;
+    width: 2rem;
+  }
+}
+
+.count {
+  margin: 6% 0 20px 0;
+  color: $secondary-font-color;
+  font-size:18px;
 }

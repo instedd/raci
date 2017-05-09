@@ -1,10 +1,45 @@
-= pluralize(@projects.count, "proyecto")
+#filters
+  = form_tag public_projects_path, method: :get, html: {name: "filter-form"} do
+    .row#sdg-filters
+      .col.s12
+        - SustainableDevelopmentGoal.all.each do |goal|
+          - no_filter = @filters.sustainable_development_goal.blank?
+          - selected = @filters.sustainable_development_goal == goal.number.to_s || no_filter
+          %a.filter-menu{href: "javascript:void(0)", "data-number" => goal.number}
+            %svg{class: "ods#{goal.number}-menu"}
+              %use{class: (no_filter ? "no-filter ":"") + (selected ? "":"inactive ") + "menu-item", "xlink:href" => "#ODS#{goal.number}"}
+        = hidden_field_tag :sustainable_development_goal, @filters.sustainable_development_goal, id: "sdg-select"
+    .row
+      .input-field.col.s6.m2
+        %i.material-icons.prefix location_on
+        = text_field_tag :location, @filters.location
+        = active_label_tag :location, "Ubicación", @filters
+      .input-field.col.s6.m2
+        %i.material-icons.prefix people
+        = text_field_tag :population, @filters.population
+        = active_label_tag :population, "Población", @filters
+      .input-field.col.s6.m2
+        %i.material-icons.prefix today
+        = text_field_tag :start_date, @filters.start_date
+        = active_label_tag :start_date, "Año de comienzo", @filters
+      .input-field.col.s6.m2
+        = text_field_tag :end_date, @filters.end_date
+        = active_label_tag :end_date, "Año de fin", @filters
+      .input-field.col.s6.m2
+        %i.material-icons.prefix folder
+        = text_field_tag :name, @filters.name
+        = active_label_tag :name, "Nombre", @filters
+      .input-field.col.s6.m2
+        = check_box_tag :legally_formed, true, @filters.legally_formed
+        = label_tag :legally_formed, "Inscripción legal"
+
+.count= pluralize(@projects.count, "proyecto")
 - @projects.each do |project|
   - org = project.organization
-  .row#project-line
-    .col.m2.hide-on-med-and-down
+  .row.project-line
+    .col.l2.hide-on-med-and-down
       = image_tag "/uploads/#{org.logo}", class: "org-logo" if org.logo
-    .col.m8
+    .col.l7.m8.s12
       .row#title
         .col.s12
           .title= link_to project.name, project_path(project)
@@ -32,7 +67,7 @@
             = project.start_date.try(:year)
             \-
             = project.end_date.try(:year)
-    #contact-details.col.m2.hide-on-med-and-down
+    #contact-details.col.l3.m4.hide-on-small-only
       .row
         .col.s12
           %i.material-icons email
