@@ -32,7 +32,8 @@ class ProjectsController < ApplicationController
   # POST /projects.json
   def create
     new_params = project_params
-    new_params = parse_project_goals(new_params)
+    new_params["project_goals"] = project_params["project_goals"]
+        .map{|id| ProjectGoal.new(goal: id)} if project_params["project_goals"]
     @project = Project.new(new_params)
     @project.organization = current_user.organization
 
