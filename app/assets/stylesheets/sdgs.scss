@@ -151,20 +151,42 @@ use.inverted { color: #ffffff; }
 
 .sdg-header {
   width: 100%;
+  height: 100%;
   color: $light-font;
+  display: flex;
+  padding:58px;
 
-  .row {
-    padding: 30px;
-  }
   svg.logo {
-    height: 90%;
-
+    position: absolute;
+    top:0;
+    left:0;
+    height: 100%;
+    width: 100%;
   }
   .title {
     font-size: 30px;
   }
   .lead {
     padding: 20px 0;
+  }
+  .svg-container {
+    width: 50%;
+    height: 0;
+    padding-top: 35%;
+    position: relative;
+  }
+  .sdg-content {
+    padding: 0 60px;
+  }
+}
+
+@media only screen and (max-device-width: 480px) {
+  .sdg-header{
+    padding: 30px;
+
+    .sdg-content {
+      padding: 5px;
+    }
   }
 }
 
