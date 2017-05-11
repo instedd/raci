@@ -180,16 +180,6 @@ use.inverted { color: #ffffff; }
   }
 }
 
-@media only screen and (max-device-width: 480px) {
-  .sdg-header{
-    padding: 30px;
-
-    .sdg-content {
-      padding: 5px;
-    }
-  }
-}
-
 #sdg-menu {
   margin-bottom: 0;
   margin-top: 5px;
@@ -209,5 +199,22 @@ use.inverted { color: #ffffff; }
 .targets {
   .content {
     padding: 0 115px 0 80px;
+  }
+}
+
+@media only screen and (max-device-width: 480px) {
+
+  .sdg-header {
+    padding: 0;
+    
+    .sdg-content {
+      padding: 5%;
+    }
+  }
+
+  .targets {
+    .content {
+      padding: 0 10%;
+    }
   }
 }
