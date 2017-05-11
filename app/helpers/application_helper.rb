@@ -31,7 +31,7 @@ module ApplicationHelper
     end
     haml_tag :div, class: 'targets row' do
       haml_tag :div, class: 'col m4'
-      haml_tag :div, class: 'col m8 s12' do
+      haml_tag :div, class: 'col m8 s12 content' do
         block.call
       end
     end
