@@ -31,70 +31,87 @@ use.inverted { color: #ffffff; }
 .ods1 {
   background-color: $ods1;
   use.inverted { fill: $ods1; }
+  &.bar { fill: $ods1; }
 }
 .ods2 {
   background-color: $ods2;
   use.inverted { fill: $ods2; }
+  &.bar { fill: $ods2; }
 }
 .ods3 {
   background-color: $ods3;
   use.inverted { fill: $ods3; }
+  &.bar { fill: $ods3; }
 }
 .ods4 {
   background-color: $ods4;
   use.inverted { fill: $ods4; }
+  &.bar { fill: $ods4; }
 }
 .ods5 {
   background-color: $ods5;
   use.inverted { fill: $ods5; }
+  &.bar { fill: $ods5; }
 }
 .ods6 {
   background-color: $ods6;
   use.inverted { fill: $ods6; }
+  &.bar { fill: $ods6; }
 }
 .ods7 {
   background-color: $ods7;
   use.inverted { fill: $ods7; }
+  &.bar { fill: $ods7; }
 }
 .ods8 {
   background-color: $ods8;
   use.inverted { fill: $ods8; }
+  &.bar { fill: $ods8; }
 }
 .ods9 {
   background-color: $ods9;
   use.inverted { fill: $ods9; }
+  &.bar { fill: $ods9; }
 }
 .ods10 {
   background-color: $ods10;
   use.inverted { fill: $ods10; }
+  &.bar { fill: $ods10; }
 }
 .ods11 {
   background-color: $ods11;
   use.inverted { fill: $ods11; }
+  &.bar { fill: $ods11; }
 }
 .ods12 {
   background-color: $ods12;
   use.inverted { fill: $ods12; }
+  &.bar { fill: $ods12; }
 }
 .ods13 {
   background-color: $ods13;
   use.inverted { fill: $ods13; }
+  &.bar { fill: $ods13; }
 }
 .ods14 {
   background-color: $ods14;
   use.inverted { fill: $ods14; }
+  &.bar { fill: $ods14; }
 }
 .ods15 {
   background-color: $ods15;
   use.inverted { fill: $ods15; }
+  &.bar { fill: $ods15; }
 }
 .ods16 {
   background-color: $ods16;
   use.inverted { fill: $ods16; }
+  &.bar { fill: $ods16; }
 }
 .ods17 {
   background-color: $ods17;
   use.inverted { fill: $ods17; }
+  &.bar { fill: $ods17; }
 }
 
 .ods1-menu { use.menu-item { color: $ods1; }; use.menu-item.inactive { color: $primary-color; } }

@@ -22,4 +22,10 @@ class Project < ApplicationRecord
     ids = search.select("projects.id","organization_id").map{|r| r.id}
     where("projects.id IN (?)", ids)
   end
+
+  def self.categorization_by_sdg(projects)
+    res = Hash.new({total: 0, by_location: {}, by_population: {}})
+    projects.each do |p|
+    end
+  end
 end

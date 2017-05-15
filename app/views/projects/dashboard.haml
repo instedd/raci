@@ -1,0 +1,21 @@
+#dashboard
+  .row
+    .col.s12
+      #by-sdg
+        = render 'by_sdg'
+        %svg#sdg-chart
+  .row
+    .col.s12.m4
+      #map
+        = render 'map'
+        %svg
+    .col.s12.m4
+      #population
+        %svg
+    .col.s12.m4
+      #timeline
+        %svg
+
+:javascript
+  var projects_by_location = #{@by_location.to_json};
+  var projects_by_sdg = #{@by_sdg.to_json};

@@ -1,0 +1,95 @@
+#map {
+  path {
+    stroke-width: 1px;
+    stroke: black;
+    cursor: pointer;
+  }
+
+  #references rect {
+    fill: url(#gradient);
+  }
+
+  #references text {
+    text-anchor: middle;
+  }
+
+  #references line {
+    stroke-width: 2px;
+    opacity: 1;
+  }
+}
+
+#sdg-chart {
+  text {
+    text-anchor: middle;
+    pointer-events: none;
+  }
+
+  .bar rect,
+  .bar text {
+    opacity: 0.5;
+  }
+
+  .bar {
+    pointer-events: none;
+  }
+
+  .bar .area{
+    pointer-events: initial;
+  }
+
+  .bar .background{
+    opacity: 1;
+  }
+}
+
+#population {
+  text {
+    pointer-events: none;
+  }
+
+  .value {
+    font-weight: 500;
+  }
+
+  .label {
+    fill: #666666;
+    font-size: 14px;
+  }
+
+  .bar {
+    pointer-events: none;
+  }
+
+  .bar .area{
+    pointer-events: initial;
+  }
+}
+
+#timeline {
+  text {
+    pointer-events: none;
+  }
+
+  .line {
+    stroke-width: 4px;
+    stroke: black;
+    fill: none;
+  }
+
+  .y path {
+    display: none;
+  }
+
+  .y .tick:nth-child(2) text {
+    display: none;
+  }
+
+  .x line, .x path {
+    display: none;
+  }
+
+  .x .tick:last-child text {
+    display: none;
+  }
+}
