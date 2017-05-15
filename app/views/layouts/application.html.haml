@@ -33,7 +33,7 @@
       = content_for?(:main) ? yield(:main) : yield
 
   %footer.page-footer.white
-    .container
+    .container.hide-on-med-and-down
       .row
         .col.l6.s12
           © 2017 -
@@ -43,4 +43,17 @@
           = image_tag 'un_logo.jpg', class: 'footer un'
           = image_tag 'cablevision-logo.svg', class: 'footer'
           = image_tag 'fibertel-logo.svg', class: 'footer'
+
+    .container.hide-on-large-only.center-align
+      .row
+        .col.s12
+          Con el apoyo de
+        .col.s12
+          = image_tag 'un_logo.jpg', class: 'footer un'
+          = image_tag 'cablevision-logo.svg', class: 'footer'
+          = image_tag 'fibertel-logo.svg', class: 'footer'
+      .row.copyright
+        .col.s12
+          © 2017 -
+          = Raci::Application.config.version_name
 

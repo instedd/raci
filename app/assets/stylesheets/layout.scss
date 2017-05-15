@@ -71,6 +71,14 @@ footer.page-footer {
       height: 50px;
     }
   }
+
+  .row {
+    margin-bottom: 5px;
+  
+    &.copyright {
+      margin-top: 15px;
+    }
+  }
 }
 
 h2 {
