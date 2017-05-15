@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require d3.min
 //= require turbolinks
 //= require materialize-sprockets
 //= require_tree .
@@ -23,6 +24,6 @@ $(document).on('turbolinks:load', function() {
     selectMonths: true, // Creates a dropdown to control month
     selectYears: 15 // Creates a dropdown of 15 years to control year
   });
-
+  Materialize.updateTextFields();
 })
 
