@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :projects
   resources :organizations, except: [:new]
-  devise_for :users
+  devise_for :users, :controllers => {:registrations => "registrations"}
 
   get "ods/:goal", to: 'sustainable_development_goals#detail', as: 'goal'
   get "proyectos", to: 'projects#public', as: 'public_projects'

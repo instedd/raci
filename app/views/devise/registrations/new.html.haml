@@ -17,7 +17,7 @@
         = f.password_field :password_confirmation, autocomplete: "off"
 
       %h2 Organización
-      = f.fields_for :organization, Organization.new do |org_f|
+      = f.fields_for :organization, @organization do |org_f|
         .input-field
           = org_f.label :name, "Nombre de Organización"
           = org_f.text_field :name
