@@ -26,8 +26,8 @@
       %tr
         %td= project.name
         %td= project.location
-        %td= project.start_date
-        %td= project.end_date
+        %td= project.start_date.try(:strftime,"%d/%m/%Y")
+        %td= project.end_date.try(:strftime,"%d/%m/%Y")
         %td
           - checkmark_icon(project.published)
         /- if current_user.is_admin
