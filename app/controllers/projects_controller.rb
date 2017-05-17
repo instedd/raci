@@ -2,7 +2,6 @@ class ProjectsController < ApplicationController
   before_action :authenticate_user!, except: [:public]
   before_action :set_project, only: [:show, :edit, :update, :destroy]
   before_action :verify_ownership, only: [:edit, :update]
-  before_action :verify_organization, except: [:show, :public]
 
   # GET /projects
   # GET /projects.json

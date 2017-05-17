@@ -8,6 +8,13 @@
     = link_to new_project_path, class: "btn-floating btn-large right" do
       %i.material-icons add
 
+- if !current_user.admin && !current_user.organization.accepted
+  .row
+    .col.s12
+      %i.material-icons.red-text warning︎
+      Tu organización necesita autorización de RACI antes de aparecer en el portal público. Podés cargar proyectos, pero estos también quedarán pendientes de aprobación.
+
+
 %table.bordered.highlight
   %thead
     %tr

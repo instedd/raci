@@ -1,3 +1,9 @@
 %h2 Editar proyecto
 
+- if !current_user.admin && !@project.published
+  .row
+    .col.s12.m6
+      %i.material-icons.red-text warning︎
+      Este proyecto está pendiente de aprobación.
+
 = render 'form'
