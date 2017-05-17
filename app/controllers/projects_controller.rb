@@ -76,7 +76,7 @@ class ProjectsController < ApplicationController
 
   def public
     @filters = filters_from_params
-    @projects = Project.apply(@filters).eager_load(:organization).includes(:project_goals)
+    @projects = Project.apply(@filters)
   end
 
   def dashboard

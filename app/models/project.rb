@@ -11,7 +11,8 @@ class Project < ApplicationRecord
   end
 
   def self.apply(filters)
-    search = published.includes(:organization).includes(:project_goals)
+    search = published.eager_load(:organization).includes(:project_goals)
+    search = search.where("organizations.accepted = ?", true)
     search = search.where("location ILIKE (?)", "%#{filters.location}%") if filters.location.present?
     search = search.where(population: filters.population) if filters.population.present?
     search = search.where("start_date >= ? AND start_date <= ?","#{filters.start_date}-01-01","#{filters.start_date}-12-31") if filters.start_date.present?
@@ -25,7 +26,8 @@ class Project < ApplicationRecord
 
   def self.categorization_by_sdg(projects)
     res = Hash.new({total: 0, by_location: {}, by_population: {}})
-    projects.each do |p|
-    end
+    # projects.each do |p|
+
+    # end
   end
 end
