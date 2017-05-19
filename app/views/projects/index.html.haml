@@ -8,29 +8,4 @@
     = link_to new_project_path, class: "btn-floating btn-large right" do
       %i.material-icons add
 
-%table.bordered.highlight
-  %thead
-    %tr
-      %th= Project.human_attribute_name(:name).capitalize
-      %th= Project.human_attribute_name(:location).capitalize
-      %th= Project.human_attribute_name(:start_date).capitalize
-      %th= Project.human_attribute_name(:end_date).capitalize
-      %th= Project.human_attribute_name(:published).capitalize
-      - if current_user.is_admin
-        %th
-      %th
-      %th
-
-  %tbody
-    - @projects.each do |project|
-      %tr
-        %td= project.name
-        %td= project.location
-        %td= project.start_date.try(:strftime,"%d/%m/%Y")
-        %td= project.end_date.try(:strftime,"%d/%m/%Y")
-        %td
-          - checkmark_icon(project.published)
-        /- if current_user.is_admin
-        /  %td= link_to 'Vista al público', project_path(project)
-        %td= link_to 'Editar', edit_project_path(project)
-        %td= link_to 'Borrar', project, :method => :delete, :data => { :confirm => '¿Borrar este proyecto?' }
+= render_listing :projects

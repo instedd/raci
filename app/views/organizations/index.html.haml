@@ -1,34 +1,4 @@
 .title
   %h2 Organizaciones
 
-%table.bordered.highlight
-  %thead
-    %tr
-      %th= Organization.human_attribute_name(:name).capitalize
-      %th= Organization.human_attribute_name(:email).capitalize
-      %th= Organization.human_attribute_name(:telephone_number).capitalize
-      %th= Organization.human_attribute_name(:legally_formed).capitalize
-      %th= Organization.human_attribute_name(:twitter).capitalize
-      %th= Organization.human_attribute_name(:facebook).capitalize
-      %th= Organization.human_attribute_name(:user).capitalize
-      %th= Organization.human_attribute_name(:accepted).capitalize
-      %th
-      %th
-      %th
-
-  %tbody
-    - @organizations.each do |organization|
-      %tr
-        %td= organization.name
-        %td= organization.email
-        %td= organization.telephone_number
-        %td
-          - checkmark_icon(organization.legally_formed)
-        %td= organization.twitter
-        %td= organization.facebook
-        %td= "#{organization.user.name} (#{organization.user.email})"
-        %td
-          - checkmark_icon(organization.accepted)
-        /%td= link_to 'Vista al público', organization
-        %td= link_to 'Editar', edit_organization_path(organization)
-        %td= link_to 'Borrar', organization, :method => :delete, :data => { :confirm => '¿Borrar esta organización?' }
+= render_listing :organizations

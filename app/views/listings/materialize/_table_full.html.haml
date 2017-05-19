@@ -1,0 +1,7 @@
+.row
+  %div{:class => listing.render_filters_at?(:side) ? 'col s12' : 'col s12'}
+    - if !listing.scopes.empty? || listing.searchable? || listing.filterable?
+      = listings_partial_render 'header', listing
+    = listings_partial_render 'table_content', listing
+  - if listing.render_filters_at?(:side)
+    = listings_partial_render 'side_filters', listing
