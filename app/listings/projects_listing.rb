@@ -9,7 +9,10 @@ class ProjectsListing < Listings::Base
     projects.order('published DESC')
   end
 
-  column :name
+  scope 'Todos', :all, default: true
+  scope 'Pendientes', :pending
+
+  column :name, searchable: true
   column :location
   column :start_date do |project, value|
    value.try(:strftime,"%d/%m/%Y")

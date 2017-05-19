@@ -5,6 +5,7 @@ class Project < ApplicationRecord
   validates :name, presence: true
 
   scope :published, -> { where(published: true) }
+  scope :pending, -> { where(published: [false, nil]) }
 
   def for_goal?(id)
     project_goals.any?{|pg| pg.goal == id.to_i}

@@ -4,7 +4,10 @@ class OrganizationsListing < Listings::Base
     Organization.order('accepted DESC')
   end
 
-  column :name
+  scope 'Todas', :all, default: true
+  scope 'Pendientes', :pending
+
+  column :name, searchable: true
   column :email
   column :telephone_number
   column :legally_formed do |organization, value|
