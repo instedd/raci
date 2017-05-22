@@ -171,7 +171,7 @@ use.inverted { color: #ffffff; }
   height: 100%;
   color: $light-font;
   display: flex;
-  padding:58px;
+  padding:60px 70px;
 
   svg.logo {
     position: absolute;
@@ -179,21 +179,26 @@ use.inverted { color: #ffffff; }
     left:0;
     height: 100%;
     width: 100%;
+    max-width: 240px;
   }
   .title {
     font-size: 30px;
+    font-weight:300;
+    line-height: 36px;
   }
   .lead {
-    padding: 20px 0;
+    font-size: 18px;
+    font-weight: 200;
+    line-height: 24px;
+    padding-top: 28px;
   }
   .svg-container {
-    width: 50%;
     height: 0;
-    padding-top: 35%;
+    padding-top: 18%;
     position: relative;
   }
   .sdg-content {
-    padding: 0 60px;
+    padding: 0 40px 0 60px;
   }
 }
 
@@ -215,7 +220,10 @@ use.inverted { color: #ffffff; }
 
 .targets {
   .content {
-    padding: 0 115px 0 80px;
+    font-size: 18px;
+    line-height: 24px;
+    padding: 0px 110px 0 105px;
+    margin-bottom: 85px;
   }
 }
 
@@ -225,13 +233,14 @@ use.inverted { color: #ffffff; }
     padding: 0;
     
     .sdg-content {
-      padding: 5%;
+      padding: 12%;
     }
   }
 
   .targets {
     .content {
-      padding: 0 10%;
+      padding: 0 12%;
+      margin-bottom: 15%;
     }
   }
 }
