@@ -26,7 +26,10 @@
           - checkmark_icon(organization.legally_formed)
         %td= organization.twitter
         %td= organization.facebook
-        %td= "#{organization.user.name} (#{organization.user.email})"
+        - if organization.user
+          %td= "#{organization.user.name} (#{organization.user.email})"
+        - else
+          %td
         %td
           - checkmark_icon(organization.accepted)
         /%td= link_to 'Vista al público', organization
