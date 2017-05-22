@@ -3,7 +3,7 @@ function Groups(svg, callbackIn, callbackOut) {
   var self = this;
   var MARGIN = 18;
   var BAND = 18;
-  var _svg, _container, _data, _sub, _width, _height, _labels, _color,
+  var _svg, _container, _data, _sub, _width, _height, _labels, _color, _callbackIn, _callbackOut,
     _initialized = false,
     _margin = {top: 0, right: 40, bottom: 0, left: 0},
     _x = d3.scaleLinear();
@@ -58,7 +58,7 @@ function Groups(svg, callbackIn, callbackOut) {
           .attr("height", BAND)
           .transition()
           .duration(_initialized? 500:0)
-          .style("fill", _sub? "#cccccc" : null)
+          .style("fill", "#cccccc")
           .attr("width", function (d) { return _x(d);})
 
     _container.selectAll(".bar").select(".sub")
@@ -67,7 +67,7 @@ function Groups(svg, callbackIn, callbackOut) {
           .attr("height", BAND)
           .transition()
           .duration(_initialized? 500:0)
-          .attr("width", function(d, i) { return _sub? _x(_sub[i]) : 0; });
+          .attr("width", function(d, i) { return _sub? _x(_sub[i]) : _x(d); });
 
     _container.selectAll(".bar").select(".value")
         .text(function (d, i) { return _sub? _sub[i] : d;})

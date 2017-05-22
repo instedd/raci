@@ -6,40 +6,37 @@ $(document).on('turbolinks:load', function(){
     var PROVINCES = ["BA", "CABA", "CAT", "CBA", "CHO", "CHT", "COR", "ER", "FSA", "JUJ", "LP", "LR", "MIS", "MZA", "NEU", "RN", "SAL", "SC", "SE", "SF", "SJ", "SL", "TF", "TUC"];
     var sdg;
     var groups;
-    var timelineData = [[new Date("1-May-07"),  35],
-          [new Date("1-Jun-07"),  40],
-          [new Date("1-Jul-07"),  81],
-          [new Date("1-Aug-07"),  392],
-          [new Date("1-Oct-07"),  506],
-          [new Date("1-Nov-07"),  688],
-          [new Date("1-Dec-07"), 734],
-          [new Date("1-Jan-08"), 874],
-          [new Date("1-Feb-08"), 936],
-          [new Date("1-Mar-08"), 752],
-          [new Date("1-Apr-08"), 1234]];
     var projects;
 
     function callbackSdg(id) {
-      console.log('HOLA')
       // population
-      // groups.sub(getDataPopulation(projects_by_population["by_sdg"][id]));
-      // groups.color(COLORS[id-1]);
-      // groups.render();
+      groups.sub(getDataPopulation(projects_by_population["by_sdg"][id]));
+      groups.color(COLORS[id-1]);
+      groups.render();
 
       // map
       map.data(getDataMap(projects_by_location["by_sdg"][id]));
       map.color(COLORS[id-1]);
       map.render();
+
+      // timeline
+      projects.sub(getDataTimeline(projects_by_upload_date["by_sdg"][id]));
+      projects.color(COLORS[id-1]);
+      projects.render();
     }
 
     function backToNormalSdg(id) {
-      // groups.color(defaultColor);
-      // groups.sub(null);
-      // groups.render();
+      groups.color(defaultColor);
+      groups.sub(null);
+      groups.render();
 
       map.data(getDataMap(projects_by_location["location_counts"]));
       map.color(defaultColor);
       map.render();
+
+      projects.sub(null);
+      projects.color(defaultColor);
+      projects.render();
     }
 
     function callbackMap(id) {
@@ -50,6 +47,10 @@ $(document).on('turbolinks:load', function(){
       // population
       groups.sub(getDataPopulation(projects_by_population["by_location"][id]));
       groups.render();
+
+      // timeline
+      projects.sub(getDataTimeline(projects_by_upload_date["by_location"][id]));
+      projects.render();
     }
 
     function backToNormalMap(id) {
@@ -59,6 +60,9 @@ $(document).on('turbolinks:load', function(){
       // sdgs
       sdg.sub(null);
       sdg.render();
+      // timeline
+      projects.sub(null);
+      projects.render();
     }
 
     function callbackPopulation(id) {
@@ -69,15 +73,20 @@ $(document).on('turbolinks:load', function(){
       // map
       map.data(getDataMap(projects_by_location["by_population"][id]));
       map.render();
+      // timeline
+      projects.sub(getDataTimeline(projects_by_upload_date["by_population"][id]));
+      projects.render();
     }
 
     function backToNormalPopulation(id) {
       map.data(getDataMap(projects_by_location["location_counts"]));
-      map.color(defaultColor);
       map.render();
 
       sdg.sub(null);
       sdg.render();
+
+      projects.sub(null);
+      projects.render();
     }
 
     function getDataSdg(original) {
@@ -107,49 +116,57 @@ $(document).on('turbolinks:load', function(){
       return data;
     }
 
-    function getSubTimeline(source) {
+    function getDataTimeline(original) {
       data = []
-      for (var i = 0; i < source.length; i++) {
-        data.push([source[i][0], Math.round(source[i][1] * Math.random())]);
+      if(original) {
+        original.forEach(function (d){
+          data.push([new Date (d[0]), d[1]]);
+        })
+        data.sort(function(a,b){
+          return b[0] - a[0];
+        });
+        data = data.slice(0,6);
       }
       return data;
     }
 
+    var map_width = document.querySelector("#map").offsetWidth - 50;
+    var map_height = window.innerHeight * 0.5;
     // map
     map = new Map(document.querySelector("#map svg"), callbackMap, backToNormalMap);
     map.data(getDataMap(projects_by_location["location_counts"]));
     map.color(defaultColor);
-    map.setSize(document.querySelector("#map").offsetWidth - 20, window.innerHeight * 0.5);
+    map.setSize(map_width, map_height);
     map.render();
 
     // sdgs
     sdg = new ODS(document.querySelector("svg#sdg-chart"), callbackSdg, backToNormalSdg);
     sdg.data(getDataSdg(projects_by_sdg["sdg_counts"]));
-    sdg.setSize(window.innerWidth - 50, window.innerHeight * 0.5);
+    sdg.setSize(window.innerWidth - 100, window.innerHeight * 0.5);
     sdg.render();
 
     // population
-    // groups = new Groups(document.querySelector("#population svg"), callbackPopulation, backToNormalPopulation);
-    // groups.labels(labels);
-    // groups.data(getDataPopulation(projects_by_population["population_counts"]));
-    // groups.color(defaultColor);
-    // groups.setSize(document.querySelector("#population").offsetWidth - 20, window.innerHeight * 0.5);
-    // groups.render();
+    groups = new Groups(document.querySelector("#population svg"), callbackPopulation, backToNormalPopulation);
+    groups.labels(labels);
+    groups.data(getDataPopulation(projects_by_population["population_counts"]));
+    groups.color(defaultColor);
+    groups.setSize(document.querySelector("#population").offsetWidth - 20, window.innerHeight * 0.5);
+    groups.render();
 
     // timeline
     projects = new Projects(document.querySelector("#timeline svg"));
-    projects.data(timelineData);
+    projects.data(getDataTimeline(projects_by_upload_date["timeline_counts"]));
     projects.color(defaultColor);
     projects.setSize(document.querySelector("#timeline").offsetWidth - 20, window.innerHeight * 0.5);
     projects.render();
 
     window.addEventListener("resize", function (e) {
       // map
-      map.setSize(document.querySelector("#map").offsetWidth - 20, window.innerHeight * 0.5);
+      map.setSize(document.querySelector("#map").offsetWidth - 50, map_height);
       map.render();
 
       // sdgs
-      sdg.setSize(window.innerWidth - 20, window.innerHeight - 20);
+      sdg.setSize(window.innerWidth - 100, window.innerHeight - 20);
       sdg.render();
 
       // population
@@ -160,12 +177,5 @@ $(document).on('turbolinks:load', function(){
       projects.setSize(document.querySelector("#timeline").offsetWidth - 20, window.innerHeight * 0.5);
       projects.render();
     });
-
-    window.addEventListener("click", function (e) {
-      // timeline
-      projects.sub(Math.random() > .5? getSubTimeline(projects.data()) : null);
-      projects.color(COLORS[Math.round(Math.random() * (COLORS.length - 1))]);
-      projects.render();
-    })
   }
 })

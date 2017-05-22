@@ -80,4 +80,33 @@ class Project < ApplicationRecord
     res
   end
 
+  def self.categorization_by_upload_time(projects)
+    res = {timeline_counts: Hash.new(0), by_sdg: {}, by_location: {}, by_population: {}}
+    projects.each do |p|
+      date = p.month_of_upload
+      res[:timeline_counts][date] += 1
+      p.populations.each do |pop|
+        res[:by_population][pop.name] = Hash.new(0) unless res[:by_population].has_key?(pop.name)
+        res[:by_population][pop.name][date] += 1
+      end
+      p.project_goals.each do |pg|
+        res[:by_sdg][pg.goal] = Hash.new(0) unless res[:by_sdg].has_key?(pg.goal)
+        res[:by_sdg][pg.goal][date] += 1
+      end
+      p.locations.each do |loc|
+        res[:by_location][loc.code] = Hash.new(0) unless res[:by_location].has_key?(loc.code)
+        res[:by_location][loc.code][date] += 1
+      end
+    end
+    res[:timeline_counts] = res[:timeline_counts].to_a
+    res[:by_sdg].each_pair{ |k,v| res[:by_sdg][k] = v.to_a }
+    res[:by_location].each_pair{ |k,v| res[:by_location][k] = v.to_a }
+    res[:by_population].each_pair{ |k,v| res[:by_population][k] = v.to_a }
+    res
+  end
+
+  def month_of_upload()
+    "#{created_at.year}-#{created_at.month}"
+  end
+
 end

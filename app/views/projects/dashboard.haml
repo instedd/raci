@@ -11,13 +11,12 @@
       %h3 Proyectos por provincia
       #map
         = render 'map'
-        %svg
     .col.s12.m4
       %h3 Proyectos por población
       #population
         %svg
     .col.s12.m4
-      %h3 Proyectos por mes
+      %h3 Proyectos subidos por mes
       #timeline
         %svg
 
@@ -26,3 +25,4 @@
   var projects_by_sdg = #{@by_sdg.to_json};
   var projects_by_population = #{@by_population.to_json};
   var labels = #{Population.labels.to_json};
+  var projects_by_upload_date = #{@by_time.to_json};

@@ -51,8 +51,7 @@ function Map(svg, callbackIn, callbackOut) {
   self.data = function(value) {
     if(arguments.length) {
       _data = value;
-      max = d3.max(_data, function(d) { return d.value; });
-      if(max == 0) max = 1;
+      max = Math.max(1, d3.max(_data, function(d) { return d.value; }));
       _colorScale.domain([0, max]);
     } else {
       return _data;

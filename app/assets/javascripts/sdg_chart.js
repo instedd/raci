@@ -2,7 +2,7 @@ function ODS(svg, callbackIn, callbackOut) {
 
   var self = this;
   var MARGIN = 2;
-  var _svg, _container, _data, _sub, _width, _height,
+  var _svg, _container, _data, _sub, _width, _height, _callbackOut, _callbackIn,
     _initialized = false,
     _margin = {top: 20, right: 0, bottom: 0, left: 0},
     _x = d3.scaleBand(),
@@ -106,7 +106,7 @@ function ODS(svg, callbackIn, callbackOut) {
 
           d3.select(this).select("use rect")
             .attr("fill", function (d, j) {return i == j? null : "#cccccc"});
-          console.log('wiwiwi');
+
           _callbackIn(i + 1);
         })
         .on("mouseout", function(d, i) {

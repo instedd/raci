@@ -83,7 +83,7 @@ class ProjectsController < ApplicationController
     all_projects = Project.published.eager_load(:project_goals).all
     @by_sdg = Project.categorization_by_sdg(all_projects)
     @by_population = Project.categorization_by_population(all_projects)
-    @by_time = Hash.new(0)
+    @by_time = Project.categorization_by_upload_time(all_projects)
     @by_location = Project.categorization_by_location(all_projects)
   end
 
