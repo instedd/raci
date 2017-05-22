@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170505154436) do
+ActiveRecord::Schema.define(version: 20170522143001) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "locations", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "code"
+  end
+
+  create_table "locations_projects", id: false, force: :cascade do |t|
+    t.integer "project_id",  null: false
+    t.integer "location_id", null: false
+    t.index ["project_id", "location_id"], name: "index_locations_projects_on_project_id_and_location_id", using: :btree
+  end
 
   create_table "organizations", force: :cascade do |t|
     t.boolean  "legally_formed"
@@ -28,6 +41,18 @@ ActiveRecord::Schema.define(version: 20170505154436) do
     t.datetime "updated_at",       null: false
     t.string   "logo"
     t.index ["user_id"], name: "index_organizations_on_user_id", using: :btree
+  end
+
+  create_table "populations", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "populations_projects", id: false, force: :cascade do |t|
+    t.integer "project_id",    null: false
+    t.integer "population_id", null: false
+    t.index ["project_id", "population_id"], name: "index_populations_projects_on_project_id_and_population_id", using: :btree
   end
 
   create_table "project_goals", force: :cascade do |t|

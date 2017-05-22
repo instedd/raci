@@ -24,3 +24,5 @@
 :javascript
   var projects_by_location = #{@by_location.to_json};
   var projects_by_sdg = #{@by_sdg.to_json};
+  var projects_by_population = #{@by_population.to_json};
+  var labels = #{Population.labels.to_json};

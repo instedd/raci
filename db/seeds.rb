@@ -19,4 +19,47 @@ org_user = User.create(email: 'user@ngo.org',
   password_confirmation: '12345678',
   confirmed_at: DateTime.now)
 
+
 Organization.create(name: "NGO", twitter: "@ngo", email: "info@ngo.org", user: org_user)
+
+[
+  ["Buenos Aires", "BA"],
+  ["Catamarca", "CAT"],
+  ["Chaco", "CHO"],
+  ["Chubut", "CHT"],
+  ["Ciudad de Buenos Aires", "CABA"],
+  ["Córdoba", "CBA"],
+  ["Corrientes", "COR"],
+  ["Entre Ríos", "ER"],
+  ["Formosa", "FSA"],
+  ["Jujuy", "JUJ"],
+  ["La Pampa", "LP"],
+  ["La Rioja", "LR"],
+  ["Mendoza", "MZA"],
+  ["Misiones", "MIS"],
+  ["Neuquén", "NEU"],
+  ["Río Negro", "RN"],
+  ["Salta", "SAL"],
+  ["San Juan", "SJ"],
+  ["San Luis", "SL"],
+  ["Santa Cruz", "SC"],
+  ["Santa Fe", "SF"],
+  ["Santiago del Estero", "SE"],
+  ["Tierra del Fuego", "TF"],
+  ["Tucumán", "TUC"]
+].each do |name, code|
+  Location.create name: name, code: code
+end
+
+[
+  "Adolescentes",
+  "Tercera edad",
+  "Niños",
+  "Mujeres",
+  "LGBTQ",
+  "Discapacitados",
+  "Pueblos originarios",
+  "HIV+"
+].each do |pop|
+  Population.create name: pop
+end

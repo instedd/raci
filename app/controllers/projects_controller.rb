@@ -82,11 +82,9 @@ class ProjectsController < ApplicationController
   def dashboard
     all_projects = Project.published.eager_load(:project_goals).all
     @by_sdg = Project.categorization_by_sdg(all_projects)
-    # all_projects.each{|p| p.project_goals.each{|g| @by_sdg[g.goal] += 1} }
-    @by_population = []
+    @by_population = Project.categorization_by_population(all_projects)
     @by_time = Hash.new(0)
-    @by_location = Hash.new(0)
-    all_projects.each{|p| @by_location[p.location] += 1}
+    @by_location = Project.categorization_by_location(all_projects)
   end
 
   private

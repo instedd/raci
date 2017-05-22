@@ -1,6 +1,8 @@
 class Project < ApplicationRecord
   belongs_to :organization
   has_many :project_goals, dependent: :destroy
+  has_and_belongs_to_many :locations, dependent: :destroy
+  has_and_belongs_to_many :populations, dependent: :destroy
 
   validates :name, presence: true
 
@@ -21,13 +23,61 @@ class Project < ApplicationRecord
     search = search.where("organizations.legally_formed = ?", filters.legally_formed) if filters.legally_formed.present?
     search = search.where("projects.name ILIKE (?)", "%#{filters.name}%") if filters.name.present?
     ids = search.select("projects.id","organization_id").map{|r| r.id}
-    where("projects.id IN (?)", ids)
+    where("projects.id IN (?)", ids).eager_load(:organization).includes(:project_goals)
   end
 
   def self.categorization_by_sdg(projects)
-    res = Hash.new({total: 0, by_location: {}, by_population: {}})
-    # projects.each do |p|
-
-    # end
+    res = {sdg_counts: Hash.new(0), by_location: {}, by_population: {}}
+    projects.each do |p|
+      p.project_goals.each do |pg|
+        res[:sdg_counts][pg.goal] += 1
+        p.populations.each do |pop|
+          res[:by_population][pop.name] = Hash.new(0) unless res[:by_population].has_key?(pop.name)
+          res[:by_population][pop.name][pg.goal] += 1
+        end
+        p.locations.each do |loc|
+          res[:by_location][loc.code] = Hash.new(0) unless res[:by_location].has_key?(loc.code)
+          res[:by_location][loc.code][pg.goal] += 1
+        end
+      end
+    end
+    res
   end
+
+  def self.categorization_by_location(projects)
+    res = {location_counts: Hash.new(0), by_sdg: {}, by_population: {}}
+    projects.each do |p|
+      p.locations.each do |loc|
+        res[:location_counts][loc.code] += 1
+        p.populations.each do |pop|
+          res[:by_population][pop.name] = Hash.new(0) unless res[:by_population].has_key?(pop.name)
+          res[:by_population][pop.name][loc.code] += 1
+        end
+        p.project_goals.each do |pg|
+          res[:by_sdg][pg.goal] = Hash.new(0) unless res[:by_sdg].has_key?(pg.goal)
+          res[:by_sdg][pg.goal][loc.code] += 1
+        end
+      end
+    end
+    res
+  end
+
+  def self.categorization_by_population(projects)
+    res = {population_counts: Hash.new(0), by_sdg: {}, by_location: {}}
+    projects.each do |p|
+      p.populations.each do |pop|
+        res[:population_counts][pop.name] += 1
+        p.project_goals.each do |pg|
+          res[:by_sdg][pg.goal] = Hash.new(0) unless res[:by_sdg].has_key?(pg.goal)
+          res[:by_sdg][pg.goal][pop.name] += 1
+        end
+        p.locations.each do |loc|
+          res[:by_location][loc.code] = Hash.new(0) unless res[:by_location].has_key?(loc.code)
+          res[:by_location][loc.code][pop.name] += 1
+        end
+      end
+    end
+    res
+  end
+
 end

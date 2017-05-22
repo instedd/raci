@@ -1,4 +1,4 @@
-function ODS(svg, callback) {
+function ODS(svg, callbackIn, callbackOut) {
 
   var self = this;
   var MARGIN = 2;
@@ -106,13 +106,15 @@ function ODS(svg, callback) {
 
           d3.select(this).select("use rect")
             .attr("fill", function (d, j) {return i == j? null : "#cccccc"});
-
-          _callback(i + 1);
+          console.log('wiwiwi');
+          _callbackIn(i + 1);
         })
         .on("mouseout", function(d, i) {
           _container.selectAll(".bar")
             .transition()
             .style("fill", null);
+
+          _callbackOut(i+1);
         });
 
       _x.domain(d3.range(_data.length));
@@ -124,7 +126,8 @@ function ODS(svg, callback) {
 
   self.sub = function(value) {
     if(arguments.length) {
-      _sub = value;
+      if(value == null) _sub = undefined;
+      else _sub = value;
     } else {
       return _sub;
     }
@@ -138,12 +141,13 @@ function ODS(svg, callback) {
     _y.range([0, _height]);
   }
 
-  function init(svg, callback) {
+  function init(svg, callbackIn, callbackOut) {
     _svg = d3.select(svg);
     _container = _svg.append("g");
-    _callback = callback;
+    _callbackIn = callbackIn;
+    _callbackOut = callbackOut;
     self.setSize(960, 480)
   };
 
-  init(svg, callback);
+  init(svg, callbackIn, callbackOut);
 }

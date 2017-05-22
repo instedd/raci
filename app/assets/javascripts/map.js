@@ -1,7 +1,7 @@
-function Map(svg, callback) {
+function Map(svg, callbackIn, callbackOut) {
 
   var self = this;
-  var _svg, _country, _data, _color, _width, _height, _initialized, _callback, _references, _gradient,
+  var _svg, _country, _data, _color, _width, _height, _initialized, _callbackIn, _callbackOut, _references, _gradient,
     _colorScale = d3.scaleLinear().domain([0, 1]).range(["#cccccc", "#000000"]);
 
   d3.formatDefaultLocale({"decimal": ",",
@@ -51,7 +51,9 @@ function Map(svg, callback) {
   self.data = function(value) {
     if(arguments.length) {
       _data = value;
-      _colorScale.domain([0, d3.max(_data, function(d) { return d.value; })]);
+      max = d3.max(_data, function(d) { return d.value; });
+      if(max == 0) max = 1;
+      _colorScale.domain([0, max]);
     } else {
       return _data;
     }
@@ -85,12 +87,12 @@ function Map(svg, callback) {
       .attr("stroke", _colorScale(value));
   }
 
-  function init(svg, callback) {
+  function init(svg, callbackIn, callbackOut) {
     _svg = d3.select(svg);
     _svg.selectAll("path")
       .on("mouseover", function(d, i) {
         var id = d3.select(this).attr("id");
-        _callback(id);
+        _callbackIn(id);
         reference(_data[i].value);
         _data.forEach(function (d) {
           _svg.select("#" + d.key)
@@ -102,6 +104,8 @@ function Map(svg, callback) {
       }).on("mouseout", function(d, i) {
         reference(_colorScale.domain()[1]);
         self.render();
+        var id = d3.select(this).attr("id");
+        _callbackOut(id);
       });
     _country = _svg.select("#ARG");
     _references = _svg.append("g").attr("id", "references");
@@ -111,7 +115,8 @@ function Map(svg, callback) {
       .attr("y2","0");
     _references.append("text")
       .attr("y", -18);
-    _callback = callback;
+    _callbackIn = callbackIn;
+    _callbackOut = callbackOut;
 
     _gradient = _svg.append("defs")
               .append("linearGradient")
@@ -129,5 +134,5 @@ function Map(svg, callback) {
     self.setSize(480, 480)
   };
 
-  init(svg, callback);
+  init(svg, callbackIn, callbackOut);
 }

@@ -1,4 +1,4 @@
-function Groups(svg, callback) {
+function Groups(svg, callbackIn, callbackOut) {
 
   var self = this;
   var MARGIN = 18;
@@ -26,7 +26,6 @@ function Groups(svg, callback) {
 
 
   self.render = function() {
-
       _container.attr("transform", "translate(" + _margin.left + "," + _margin.top + ")");
 
       _container.selectAll(".bar").select(".label")
@@ -103,12 +102,13 @@ function Groups(svg, callback) {
           _container.selectAll(".bar")
             .transition()
             .style("fill", function (d, j) {return i == j? _color : "#cccccc"});
-          _callback(_labels[i]);
+          _callbackIn(_labels[i]);
         })
         .on("mouseout", function(d, i) {
           _container.selectAll(".bar")
             .transition()
             .style("fill", _color);
+          _callbackOut(_labels[i]);
         });
 
       _x.domain([0, d3.max(_data, function(d) { return d; })]);
@@ -146,12 +146,13 @@ function Groups(svg, callback) {
     _width = width - _margin.left - _margin.right;
   }
 
-  function init(svg, callback) {
+  function init(svg, callbackIn, callbackOut) {
     _svg = d3.select(svg);
     _container = _svg.append("g");
-    _callback = callback;
+    _callbackIn = callbackIn;
+    _callbackOut = callbackOut;
     self.setSize(960, 480)
   };
 
-  init(svg, callback);
+  init(svg, callbackIn, callbackOut);
 }
