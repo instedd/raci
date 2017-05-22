@@ -68,19 +68,23 @@
             \-
             = project.end_date.try(:year)
     #contact-details.col.l3.m4.hide-on-small-only
-      .row
-        .col.s12
-          %i.material-icons email
-          = org.email
-      .row
-        .col.s12
-          %i.material-icons phone
-          = org.telephone_number
-      .row
-        .col.s12
-          %i.extra-icons.twitter
-          = org.twitter
-      .row
-        .col.s12
-          %i.extra-icons.facebook
-          = org.facebook
+      - unless org.email.blank?
+        .row
+          .col.s12
+            %i.material-icons email
+            = org.email
+      - unless org.telephone_number.blank?
+        .row
+          .col.s12
+            %i.material-icons phone
+            = org.telephone_number
+      - unless org.twitter.blank?
+        .row
+          .col.s12
+            %i.extra-icons.twitter
+            = org.twitter
+      - unless org.facebook.blank?
+        .row
+          .col.s12
+            %i.extra-icons.facebook
+            = org.facebook

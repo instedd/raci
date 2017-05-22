@@ -16,6 +16,7 @@
         = f.text_area :description, class: "materialize-textarea"
     .row
       .input-field.col.s12.m6
+        / MULTIPLE SELECT
         = active_label(f, :location, @project)
         = f.text_field :location
     .row
