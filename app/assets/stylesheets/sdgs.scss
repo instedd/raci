@@ -133,15 +133,16 @@ use.inverted { color: #ffffff; }
 .ods17-menu { use.menu-item { color: $ods17; }; use.menu-item.inactive { color: $primary-color; } }
 
 .sdg_badge {
-  min-width: 3rem;
-  padding: 3px 6px;
+  font-size: 14px;
+  color: #ffffff;
   text-align: center;
   height: 22px;
+  width: 22px;
   box-sizing: border-box;
   border-radius: 2px;
-  font-size: 0.8rem;
-  color: #ffffff;
+  display: inline-block;
 }
+
 .font-sdg1 { color: $ods1; }
 .font-sdg2 { color: $ods2; }
 .font-sdg3 { color: $ods3; }
@@ -160,7 +161,9 @@ use.inverted { color: #ffffff; }
 .font-sdg16 { color: $ods16; }
 .font-sdg17 { color: $ods17; }
 
-
+.sdgs {
+  line-height: 1.7;
+}
 
 .container.c-sustainable_development_goals {
   width: 100%;
@@ -227,7 +230,7 @@ use.inverted { color: #ffffff; }
   }
 }
 
-@media only screen and (max-device-width: 480px) {
+@media #{$small-and-down} {
 
   .sdg-header {
     padding: 0;
