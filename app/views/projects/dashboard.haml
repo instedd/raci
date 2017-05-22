@@ -1,18 +1,23 @@
 #dashboard
   .row
     .col.s12
+      %h3 Proyectos por ODS
       #by-sdg
         = render 'by_sdg'
         %svg#sdg-chart
-  .row
+  .divider#dashboard
+  .row#charts
     .col.s12.m4
+      %h3 Proyectos por provincia
       #map
         = render 'map'
         %svg
     .col.s12.m4
+      %h3 Proyectos por población
       #population
         %svg
     .col.s12.m4
+      %h3 Proyectos por mes
       #timeline
         %svg
 

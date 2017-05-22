@@ -93,3 +93,22 @@
     display: none;
   }
 }
+
+#by-sdg {
+  margin-bottom: 16px;
+}
+
+#dashboard {
+  .divider {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    right: 0;
+  }
+}
+
+#charts {
+  div {
+    margin-top: 32px;
+  }
+}
