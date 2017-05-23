@@ -22,6 +22,8 @@ es:
         location: ubicación
         published: publicado
         project_goals: objetivos de desarrollo sostenible
+        organization: organización
+        organization_id: organización
     errors:
       messages:
         record_invalid: "La validación falló: %{errors}"

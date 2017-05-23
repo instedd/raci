@@ -34,5 +34,6 @@ $(document).on('turbolinks:load', function() {
     format: 'dd/mm/yyyy',
   });
   Materialize.updateTextFields();
+  $('select').material_select();
 })
 

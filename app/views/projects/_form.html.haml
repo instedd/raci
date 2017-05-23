@@ -10,6 +10,11 @@
       .input-field.col.s12.m6
         = active_label(f, :name, @project)
         = f.text_field :name
+    - if current_user.admin
+      .row
+        .input-field.col.s12.m6
+          = f.label :organization_id, class: 'active'
+          = f.collection_select(:organization_id, Organization.all, :id, :name)
     .row
       .input-field.col.s12.m6
         = active_label(f, :description, @project)
