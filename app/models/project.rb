@@ -23,7 +23,7 @@ class Project < ApplicationRecord
     search = search.where("organizations.legally_formed = ?", filters.legally_formed) if filters.legally_formed.present?
     search = search.where("projects.name ILIKE (?)", "%#{filters.name}%") if filters.name.present?
     ids = search.select("projects.id","organization_id").map{|r| r.id}
-    where("projects.id IN (?)", ids).eager_load(:organization).includes(:project_goals)
+    where("projects.id IN (?)", ids).eager_load(:organization).includes(:project_goals).includes(:locations).includes(:populations)
   end
 
   def self.categorization_by_sdg(projects)

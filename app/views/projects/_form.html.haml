@@ -21,9 +21,12 @@
         = f.text_area :description, class: "materialize-textarea"
     .row
       .input-field.col.s12.m6
-        / MULTIPLE SELECT
-        = active_label(f, :location, @project)
-        = f.text_field :location
+        = active_label(f, :location_ids, @project)
+        = f.collection_select(:location_ids, Location.all, :id, :name, {prompt: "Elegir"}, {multiple: true})
+    .row
+      .input-field.col.s12.m6
+        = active_label(f, :population_ids, @project)
+        = f.collection_select(:population_ids, Population.all, :id, :name, {prompt: "Elegir"}, {multiple: true})
     .row
       .input-field.col.s6.m3
         = active_label(f, :start_date, @project)

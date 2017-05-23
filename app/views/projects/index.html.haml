@@ -19,7 +19,8 @@
   %thead
     %tr
       %th= Project.human_attribute_name(:name).capitalize
-      %th= Project.human_attribute_name(:location).capitalize
+      %th= Project.human_attribute_name(:locations).capitalize
+      %th= Project.human_attribute_name(:populations).capitalize
       %th= Project.human_attribute_name(:start_date).capitalize
       %th= Project.human_attribute_name(:end_date).capitalize
       %th= Project.human_attribute_name(:published).capitalize
@@ -32,7 +33,8 @@
     - @projects.each do |project|
       %tr
         %td= project.name
-        %td= project.location
+        %td= project.locations.map{|l| l.name}.join(", ")
+        %td= project.populations.map{|p| p.name}.join(", ")
         %td= project.start_date.try(:strftime,"%d/%m/%Y")
         %td= project.end_date.try(:strftime,"%d/%m/%Y")
         %td

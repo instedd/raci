@@ -19,11 +19,14 @@ es:
         start_date: fecha de comienzo
         end_date: fecha de fin
         description: descripción
-        location: ubicación
         published: publicado
         project_goals: objetivos de desarrollo sostenible
         organization: organización
         organization_id: organización
+        location_ids: ubicación
+        locations: ubicación
+        populations: poblaciones afectadas
+        population_ids: poblaciones afectadas
     errors:
       messages:
         record_invalid: "La validación falló: %{errors}"

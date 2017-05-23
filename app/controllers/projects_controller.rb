@@ -11,6 +11,7 @@ class ProjectsController < ApplicationController
       else
         Project.where(organization_id: current_user.organization.id)
       end
+    @projects = @projects.includes(:populations).includes(:locations)
   end
 
   # GET /projects/1
@@ -95,7 +96,7 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:name, :description, :organization_id, :location, :start_date, :end_date, project_goals: [], filters: {})
+      params.require(:project).permit(:name, :description, :organization_id, :start_date, :end_date, location_ids: [], population_ids: [], project_goals: [], filters: {})
     end
 
     def set_publishing_status
@@ -108,10 +109,17 @@ class ProjectsController < ApplicationController
       pj
     end
 
-    def parse_project_goals(params)
-      params["project_goals"] = params["project_goals"]
-        .map{|id| ProjectGoal.new(project_id: @project.id, goal: id)} if params["project_goals"]
-      params
+    def parse_project_goals(proj_params)
+      existing = @project.project_goals
+      proj_params["project_goals"] = proj_params["project_goals"].map do |id|
+        if found = existing.find{|pg| pg.goal == id}
+          puts found
+          found
+        else
+          ProjectGoal.new(project_id: @project.id, goal: id)
+        end
+      end if proj_params["project_goals"]
+      proj_params
     end
 
     def filters_from_params
