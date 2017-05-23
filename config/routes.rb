@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount Listings::Engine => "/listings"
+
   resources :projects
   resources :organizations, except: [:new]
   devise_for :users, :controllers => {:registrations => "registrations"}

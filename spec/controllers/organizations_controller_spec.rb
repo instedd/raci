@@ -50,10 +50,12 @@ RSpec.describe OrganizationsController, type: :controller do
     }
 
     describe "GET #index" do
-      it "assigns all organizations as @organizations" do
+      render_views
+
+      it "renders all organizations" do
         organization = Organization.create! valid_attributes
         get :index, params: {}
-        expect(assigns(:organizations)).to eq([organization])
+        expect(response.body).to include(organization.name)
       end
     end
 

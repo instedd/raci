@@ -1,0 +1,9 @@
+= paginator.render do
+  %ul.pagination
+    %li
+      = paginator.instance_variable_get("@options")[:current_page]
+      of
+      = paginator.instance_variable_get("@options")[:total_pages]
+
+    = prev_page_tag
+    = next_page_tag

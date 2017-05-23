@@ -61,11 +61,14 @@ RSpec.describe ProjectsController, type: :controller do
     end
 
     describe "GET #index" do
-      it "assigns all projects as @projects" do
+      render_views
+
+      it "renders all projects" do
         project = Project.create! valid_attributes.merge({organization_id: organization.id})
         project2 = Project.create! valid_attributes.merge({organization_id: organization2.id})
         get :index, params: {}
-        expect(assigns(:projects)).to eq([project, project2])
+        expect(response.body).to include(project.name)
+        expect(response.body).to include(project2.name)
       end
     end
 

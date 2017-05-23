@@ -1,4 +1,7 @@
 es:
+  listings:
+    search_placeholder: Buscar
+    no_data: No hay datos para mostrar
   activerecord:
     models:
       user: usuario
