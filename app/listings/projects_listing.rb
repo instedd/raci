@@ -1,4 +1,5 @@
 class ProjectsListing < Listings::Base
+  include ApplicationHelper
   model do
     projects = if current_user.is_admin
       Project
@@ -13,10 +14,10 @@ class ProjectsListing < Listings::Base
   scope 'Pendientes', :pending
 
   column :name, searchable: true
-  column :locations do |project, value|
+  column :locations, sortable: false do |project, value|
     names_for(value)
   end
-  column :populations do |project, value|
+  column :populations, sortable: false do |project, value|
     names_for(value)
   end
   column :start_date do |project, value|
