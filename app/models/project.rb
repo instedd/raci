@@ -14,10 +14,10 @@ class Project < ApplicationRecord
   end
 
   def self.apply(filters)
-    search = published.eager_load(:organization).includes(:project_goals)
+    search = published.eager_load(:organization).includes(:project_goals).includes(:locations).includes(:populations)
     search = search.where("organizations.accepted = ?", true)
-    search = search.where("location ILIKE (?)", "%#{filters.location}%") if filters.location.present?
-    search = search.where(population: filters.population) if filters.population.present?
+    search = search.where("locations.name ILIKE (?)", "%#{filters.location}%") if filters.location.present?
+    search = search.where("populations.name ILIKE (?)", "%#{filters.population}%") if filters.population.present?
     search = search.where("start_date >= ? AND start_date <= ?","#{filters.start_date}-01-01","#{filters.start_date}-12-31") if filters.start_date.present?
     search = search.where("end_date >= ? AND end_date <= ?","#{filters.end_date}-01-01","#{filters.end_date}-12-31") if filters.end_date.present?
     search = search.references(:project_goals).where("project_goals.goal = ?",filters.sustainable_development_goal.to_i) if filters.sustainable_development_goal.present?
