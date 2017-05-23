@@ -48,4 +48,8 @@ module ApplicationHelper
     haml_tag :span, goal.name, class: "font-sdg#{goal.number}"
     haml_tag :span, goal.number, class: "sdg_badge ods#{goal.number}"
   end
+
+  def names_for(list)
+    list.map{|o| o.name}.join(", ")
+  end
 end

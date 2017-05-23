@@ -56,9 +56,10 @@
       .row.project-details
         .col.s4
           %i.material-icons location_on
-          = project.location
+          = names_for(project.locations)
         .col.s4
           %i.material-icons people
+          = names_for(project.populations)
         .col.s4
           %i.material-icons today
           - if project.start_date.try(:year) == project.end_date.try(:year)

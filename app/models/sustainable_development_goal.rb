@@ -1,5 +1,5 @@
-class SustainableDevelopmentGoal < ApplicationRecord
-
+class SustainableDevelopmentGoal
+  include ActiveModel::Model
   attr_accessor :url
   attr_accessor :number
   attr_accessor :name
