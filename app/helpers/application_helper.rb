@@ -32,6 +32,7 @@ module ApplicationHelper
     haml_tag :div, class: 'targets row' do
       haml_tag :div, class: 'col m2'
       haml_tag :div, class: 'col m10 s12 content' do
+        haml_tag :h2, "Metas para el objetivo #{number}", class: 'targets-header'
         block.call
       end
     end

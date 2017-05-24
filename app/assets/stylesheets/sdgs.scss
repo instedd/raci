@@ -228,13 +228,18 @@ use.inverted { color: #ffffff; }
     padding: 0px 110px 0 105px;
     margin-bottom: 85px;
   }
+
+  h2.targets-header {
+    font-size: 30px;
+    margin-top: 50px;
+  }
 }
 
 @media #{$small-and-down} {
 
   .sdg-header {
     padding: 0;
-    
+
     .sdg-content {
       padding: 12%;
     }
