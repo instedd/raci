@@ -130,19 +130,23 @@ $(document).on('turbolinks:load', function(){
       return data;
     }
 
-    var map_width = document.querySelector("#map").offsetWidth - 50;
-    var map_height = window.innerHeight * 0.5;
+    var map_width = function(){return document.querySelector("#map").offsetWidth - 50};
+    var ods_width = function(){return window.innerWidth - 100};
+    var timeline_width = function(){return document.querySelector("#timeline").offsetWidth - 20};
+    var population_width = function(){return document.querySelector("#population").offsetWidth - 20};
+    var general_chart_height = function(){return window.innerHeight * 0.5};
     // map
     map = new Map(document.querySelector("#map svg"), callbackMap, backToNormalMap);
     map.data(getDataMap(projects_by_location["location_counts"]));
     map.color(defaultColor);
-    map.setSize(map_width, map_height);
+    console.log(map_width())
+    map.setSize(map_width(), general_chart_height());
     map.render();
 
     // sdgs
     sdg = new ODS(document.querySelector("svg#sdg-chart"), callbackSdg, backToNormalSdg);
     sdg.data(getDataSdg(projects_by_sdg["sdg_counts"]));
-    sdg.setSize(window.innerWidth - 100, window.innerHeight * 0.5);
+    sdg.setSize(ods_width(), general_chart_height());
     sdg.render();
 
     // population
@@ -150,31 +154,31 @@ $(document).on('turbolinks:load', function(){
     groups.labels(labels);
     groups.data(getDataPopulation(projects_by_population["population_counts"]));
     groups.color(defaultColor);
-    groups.setSize(document.querySelector("#population").offsetWidth - 20, window.innerHeight * 0.5);
+    groups.setSize(population_width(), general_chart_height());
     groups.render();
 
     // timeline
     projects = new Projects(document.querySelector("#timeline svg"));
     projects.data(getDataTimeline(projects_by_upload_date["timeline_counts"]));
     projects.color(defaultColor);
-    projects.setSize(document.querySelector("#timeline").offsetWidth - 20, window.innerHeight * 0.5);
+    projects.setSize(timeline_width(), general_chart_height());
     projects.render();
 
     window.addEventListener("resize", function (e) {
       // map
-      map.setSize(document.querySelector("#map").offsetWidth - 50, map_height);
+      map.setSize(map_width(), general_chart_height());
       map.render();
 
       // sdgs
-      sdg.setSize(window.innerWidth - 100, window.innerHeight - 20);
+      sdg.setSize(ods_width(), general_chart_height());
       sdg.render();
 
       // population
-      groups.setSize(document.querySelector("#population").offsetWidth - 20, window.innerHeight * 0.5);
+      groups.setSize(population_width(), general_chart_height());
       groups.render();
 
       //timeline
-      projects.setSize(document.querySelector("#timeline").offsetWidth - 20, window.innerHeight * 0.5);
+      projects.setSize(timeline_width(), general_chart_height());
       projects.render();
     });
   }
