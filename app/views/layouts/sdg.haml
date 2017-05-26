@@ -7,4 +7,9 @@
             %svg{class: "ods#{goal.number}-menu"}
               %use.menu-item{"xlink:href" => "#ODS#{goal.number}"}
   = yield
+  .row
+    .col.m2.s12
+    .col.m10.12.small.copy
+      Material extraído del
+      = link_to "website de las Naciones Unidas", "http://www.un.org/sustainabledevelopment/es/", target: "_blank"
 = render template: "layouts/application"

@@ -3,7 +3,7 @@
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{name: "viewport", content: "width=device-width, initial-scale=1"}/
-    %title Objetivos de Desarrollo Sustentable
+    %title Plataforma de Sociedad Civil para el cumplimiento de los ODS
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
@@ -58,4 +58,6 @@
         .col.s12
           © 2017 -
           = Raci::Application.config.version_name
+          \/
+          = link_to "Acerca de la plataforma", about_path
 

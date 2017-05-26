@@ -260,3 +260,11 @@ use.inverted { color: #ffffff; }
     }
   }
 }
+
+.small.copy {
+  padding: 0px 110px 0 105px;
+}
+
+@media #{$small-and-down} {
+  .small.copy { padding: 0 12%; }
+}
