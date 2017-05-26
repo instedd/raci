@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :authenticate_user!, except: [:public]
+  before_action :authenticate_user!, except: [:public, :dashboard]
   before_action :set_project, only: [:show, :edit, :update, :destroy]
   before_action :verify_ownership, only: [:edit, :update]
 
