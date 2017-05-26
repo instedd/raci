@@ -19,6 +19,11 @@
       %h3 Proyectos subidos por mes
       #timeline
         %svg
+  .row
+    .col.s12.center-align
+      = link_to public_projects_path, class: "btn btn-large", id: "go-to-list" do
+        %i.material-icons search
+        Ir al listado de proyectos
 
 :javascript
   var projects_by_location = #{@by_location.to_json};
