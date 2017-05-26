@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => {:registrations => "registrations"}
   get "admin", to: 'projects#index'
 
+  get 'sobre_la_plataforma', to: 'application#about', as: 'about'
   get "ods/:goal", to: 'sustainable_development_goals#detail', as: 'goal'
   get "proyectos", to: 'projects#public', as: 'public_projects'
 

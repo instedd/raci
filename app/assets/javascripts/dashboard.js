@@ -139,7 +139,6 @@ $(document).on('turbolinks:load', function(){
     map = new Map(document.querySelector("#map svg"), callbackMap, backToNormalMap);
     map.data(getDataMap(projects_by_location["location_counts"]));
     map.color(defaultColor);
-    console.log(map_width())
     map.setSize(map_width(), general_chart_height());
     map.render();
 
