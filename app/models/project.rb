@@ -5,6 +5,8 @@ class Project < ApplicationRecord
   has_and_belongs_to_many :populations, dependent: :destroy
 
   validates :name, presence: true
+  validates :start_date, presence: true
+  validates :end_date, presence: true
 
   scope :published, -> { where(published: true) }
   scope :pending, -> { where(published: [false, nil]) }

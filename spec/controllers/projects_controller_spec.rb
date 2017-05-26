@@ -44,7 +44,6 @@ RSpec.describe ProjectsController, type: :controller do
   # adjust the attributes here as well.
   let(:valid_attributes) {
     {name: "Project",
-    location: "Argentina",
     start_date: Date.new(2017,1,1),
     end_date: Date.new(2017,12,1),
     published: true
@@ -69,14 +68,6 @@ RSpec.describe ProjectsController, type: :controller do
         get :index, params: {}
         expect(response.body).to include(project.name)
         expect(response.body).to include(project2.name)
-      end
-    end
-
-    describe "GET #show" do
-      it "assigns the requested project as @project" do
-        project = Project.create! valid_attributes.merge({organization_id: organization.id})
-        get :show, params: {id: project.to_param}
-        expect(assigns(:project)).to eq(project)
       end
     end
 

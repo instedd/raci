@@ -8,7 +8,6 @@ RSpec.describe "projects/edit", type: :view do
       :name => "MyString",
       :description => "MyText",
       :organization => create_organization({user: @user}),
-      :location => "MyString",
       :published => false
     ))
   end

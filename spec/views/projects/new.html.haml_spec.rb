@@ -8,7 +8,6 @@ RSpec.describe "projects/new", type: :view do
       :name => "MyString",
       :description => "MyText",
       :organization_id => nil,
-      :location => "MyString",
       :published => false
     ))
   end

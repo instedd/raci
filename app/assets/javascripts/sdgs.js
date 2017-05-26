@@ -1,6 +1,7 @@
-function resize_menu(margin, spacing, selector, containerProportion = 1) {
-  w = window.innerWidth * containerProportion - margin
-  side = w / 17 - spacing
+function resize_menu(margin, spacing, selector, containerProportion) {
+  if(!containerProportion) containerProportion = 1;
+  var w = window.innerWidth * containerProportion - margin
+  var side = w / 17 - spacing
 
   $(selector).each(function(i,el){
     el.style.width = String(side) + "px"

@@ -59,14 +59,6 @@ RSpec.describe OrganizationsController, type: :controller do
       end
     end
 
-    describe "GET #show" do
-      it "assigns the requested organization as @organization" do
-        organization = Organization.create! valid_attributes
-        get :show, params: {id: organization.to_param}
-        expect(assigns(:organization)).to eq(organization)
-      end
-    end
-
     describe "GET #edit" do
       it "assigns the requested organization as @organization" do
         organization = Organization.create! valid_attributes

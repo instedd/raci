@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Devise::RegistrationsController, type: :controller do
+RSpec.describe RegistrationsController, type: :controller do
   describe "POST #create" do
     context "with valid params" do
       it "creates the organization" do

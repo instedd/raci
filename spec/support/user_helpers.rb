@@ -8,7 +8,7 @@ def create_organization(opts = {})
     :legally_formed => false,
     :email => "Email",
     :telephone_number => "Telephone Number",
-    :name => "Name",
+    :name => SecureRandom.uuid,
     :twitter => "Twitter",
     :facebook => "Facebook"
   }

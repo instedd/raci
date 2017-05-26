@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "organizations/index", type: :view do
   before(:each) do
-    @user = assign(:user, create_user({email: "admin@example.com", password: "12345678"}))
+    @user = assign(:user, create_user({email: "admin@example.com", password: "12345678", admin: true, confirmed_at: Date.today}))
     sign_in @user
     assign(:organizations, [
       Organization.create!(

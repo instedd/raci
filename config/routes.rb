@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   mount Listings::Engine => "/listings"
 
-  resources :projects
-  resources :organizations, except: [:new]
+  resources :projects, except: [:show]
+  resources :organizations, except: [:new, :show]
   devise_for :users, :controllers => {:registrations => "registrations"}
 
   get "ods/:goal", to: 'sustainable_development_goals#detail', as: 'goal'

@@ -42,10 +42,10 @@
     .col.l7.m8.s12
       .row#title
         .col.s12
-          .title= link_to project.name, project_path(project)
+          .title= project.name
           .organization
             de
-            = link_to org.name, organization_path(org)
+            = org.name
       .row
         .col.s12.sdgs
           - project.project_goals.map{|pg| pg.sustainable_development_goal }.each do |goal|

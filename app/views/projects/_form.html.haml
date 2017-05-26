@@ -30,10 +30,10 @@
     .row
       .input-field.col.s6.m3
         = active_label(f, :start_date, @project)
-        = f.text_field :start_date, class: 'datepicker', value: @project.start_date.strftime("%d/%m/%Y")
+        = f.text_field :start_date, class: 'datepicker', value: @project.start_date.try(:strftime,"%d/%m/%Y")
       .input-field.col.s6.m3
         = active_label(f, :end_date, @project)
-        = f.text_field :end_date, class: 'datepicker', value: @project.end_date.strftime("%d/%m/%Y")
+        = f.text_field :end_date, class: 'datepicker', value: @project.end_date.try(:strftime,"%d/%m/%Y")
     .row
       .input-field.col.s12.m6= f.label :project_goals
     .row
