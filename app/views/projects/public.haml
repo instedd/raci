@@ -1,7 +1,7 @@
 #filters
   = form_tag public_projects_path, method: :get, html: {name: "filter-form"} do
     .row#sdg-filters
-      .col.s12
+      .col.s12.center-align
         - SustainableDevelopmentGoal.all.each do |goal|
           - no_filter = @filters.sustainable_development_goal.blank?
           - selected = @filters.sustainable_development_goal == goal.number.to_s || no_filter
