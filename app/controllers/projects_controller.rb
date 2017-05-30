@@ -42,6 +42,9 @@ class ProjectsController < ApplicationController
   def update
     proj = set_publishing_status
     proj = parse_project_goals(proj)
+    if @project.published && !current_user.is_admin
+      proj[:published] = false
+    end
 
     respond_to do |format|
       if @project.update(proj)

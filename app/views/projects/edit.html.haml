@@ -5,5 +5,15 @@
     .col.s12.m6
       %i.material-icons.red-text warning︎
       Este proyecto está pendiente de aprobación.
+- if !current_user.admin && @project.published
+  .row
+    .col.s12.m6
+      %p
+        %i.material-icons.green-text check
+        Este proyecto está publicado y es visible al público
+      %p
+        %i.material-icons.red-text warning︎
+        Si realiza cambios, el proyecto va a volver a estado "no publicado" hasta que reciba revisión y vuelva a ser aprobado.
+
 
 = render 'form'
