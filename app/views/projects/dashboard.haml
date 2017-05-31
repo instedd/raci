@@ -1,4 +1,17 @@
 #dashboard
+
+  .row
+    .slider
+      %ul.slides
+        - SustainableDevelopmentGoal.all.each do |goal|
+          %li
+            %a.slider-item{href: goal_path(goal.url)}
+              = image_tag "sdg_presenters/#{goal.number}.jpg"
+              .caption.right-align
+                %p.light.grey-text.text-lighten-3= goal.name
+              .small-sdg-logo
+                %svg{class: "ods#{goal.number}-menu"}
+                  %use.menu-item{"xlink:href" => "#ODS#{goal.number}"}
   .row
     .col.s12
       %h3 Proyectos por ODS

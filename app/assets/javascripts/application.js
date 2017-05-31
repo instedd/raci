@@ -35,5 +35,15 @@ $(document).on('turbolinks:load', function() {
   });
   Materialize.updateTextFields();
   $('select').material_select();
+  $('.slider').slider({
+    indicators: false,
+    interval: 3000,
+    transition: 600
+  });
+
+  $('.button-collapse').sideNav({
+      draggable: true // Choose whether you can drag to open on touch screens
+    }
+  );
 })
 

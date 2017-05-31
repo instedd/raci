@@ -1,3 +1,27 @@
+.slider  {
+  .slides li .caption {
+    bottom: 3%;
+    right: 3%;
+    left: auto;
+    top: auto;
+    width: 50%;
+  }
+  .slider-item {
+    img {
+      filter: brightness(85%);
+    }
+  }
+  .small-sdg-logo {
+    left: 25px;
+    bottom: 20px;
+    position: absolute;
+    svg {
+      width: 130px;
+      height: 130px;
+    }
+  }
+}
+
 #map {
   path {
     stroke-width: 1px;
