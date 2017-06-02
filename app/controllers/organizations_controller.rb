@@ -40,6 +40,7 @@ class OrganizationsController < ApplicationController
     org = set_acceptance_status
     if org[:logo]
       name = @organization.name.split(" ").join("_") + "_" + organization_params[:logo].original_filename
+      Dir.mkdir Rails.root.join('public', 'uploads') unless File.exists?(Rails.root.join('public', 'uploads'))
       File.open(Rails.root.join('public', 'uploads', name), 'wb') do |file|
         file.write(organization_params[:logo].read)
       end
