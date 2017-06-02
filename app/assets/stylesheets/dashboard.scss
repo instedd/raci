@@ -1,4 +1,9 @@
 .slider  {
+  // This is here so we can ignore the container margins
+  position: absolute;
+  left: 0;
+  right: 0;
+
   .slides li .caption {
     bottom: 3%;
     right: 3%;
@@ -8,7 +13,7 @@
   }
   .slider-item {
     img {
-      filter: brightness(85%);
+      filter: brightness(80%);
     }
   }
   .small-sdg-logo {
@@ -20,6 +25,11 @@
       height: 130px;
     }
   }
+}
+
+#dashboard #sdgs {
+  // This is to compensate for the absolite positioning of the slider
+  margin-top: 400px;
 }
 
 @media #{$small-and-down} {
