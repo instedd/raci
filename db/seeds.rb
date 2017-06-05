@@ -52,14 +52,20 @@ Organization.create(name: "NGO", twitter: "@ngo", email: "info@ngo.org", user: o
 end
 
 [
+  "Primera infancia",
+  "Niñas/os",
   "Adolescentes",
-  "Tercera edad",
-  "Niños",
+  "Jóvenes",
+  "Adultos",
+  "Adultos mayores",
   "Mujeres",
-  "LGBTQ",
-  "Discapacitados",
-  "Pueblos originarios",
-  "HIV+"
+  "Migrantes",
+  "Pueblos Originarios",
+  "Población Rural",
+  "Personas con discapacidad",
+  "Personas en situación de calle",
+  "LGBTI",
+  "Otros"
 ].each do |pop|
   Population.create name: pop
 end
