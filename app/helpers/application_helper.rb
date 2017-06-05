@@ -24,7 +24,7 @@ module ApplicationHelper
           end
         end
         haml_tag :div, class: 'sdg-content col m10 s12' do
-          haml_tag :div, opts[:title], class: 'title'
+          haml_tag :div, SustainableDevelopmentGoal.find(number).title, class: 'title'
           haml_tag :div, opts[:lead], class: 'lead'
         end
       end

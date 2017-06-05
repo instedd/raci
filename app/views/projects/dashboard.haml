@@ -8,11 +8,11 @@
             %a.slider-item{href: goal_path(goal.url)}
               = image_tag "sdg_presenters/#{goal.number}.jpg"
               .caption.right-align
-                %p.light.grey-text.text-lighten-3= goal.name
+                %p.light.grey-text.text-lighten-3= goal.title
               .small-sdg-logo
                 %svg{class: "ods#{goal.number}-menu"}
                   %use.menu-item{"xlink:href" => "#ODS#{goal.number}"}
-  .row
+  .row#sdgs
     .col.s12
       %h3 Proyectos por ODS
       #by-sdg

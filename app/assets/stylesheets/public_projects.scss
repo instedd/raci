@@ -80,12 +80,22 @@
     }
   }
 }
+@media screen and (max-width : 1200px) {
+  // #filters .input-field label {
+  //   font-size: 12px;
+  // }
+
+  .project-line .org-logo {
+    width: 150px;
+    height: 150px;
+  }
+}
 
 @media #{$small-and-down} {
   #filters {
     #sdg-filters {
       max-width: 315px;
-    } 
+    }
   }
 }
 
