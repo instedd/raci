@@ -131,7 +131,9 @@ $(document).on('turbolinks:load', function(){
     }
 
     var map_width = function(){return document.querySelector("#map").offsetWidth - 50};
-    var ods_width = function(){return window.innerWidth - 100};
+    var marginRight = 50;
+    if(window.innerWidth > 600) { marginRight += 50 }
+    var ods_width = function(){return window.innerWidth - marginRight};
     var timeline_width = function(){return document.querySelector("#timeline").offsetWidth - 20};
     var population_width = function(){return document.querySelector("#population").offsetWidth - 20};
     var general_chart_height = function(){return window.innerHeight * 0.5};

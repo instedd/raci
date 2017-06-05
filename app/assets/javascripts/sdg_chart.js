@@ -27,20 +27,33 @@ function ODS(svg, callbackIn, callbackOut) {
 
   self.render = function() {
 
-      _container.attr("transform", "translate(" + _margin.left + "," + _margin.top + ")");
+    var full = _x.bandwidth() > 36;
 
-      _container.selectAll(".bar").select(".area")
-          .attr("x", function(d, i) { return _x(i); })
-          .attr("width", _x.step())
-          .style("fill", "transparent")
-          .attr("y", 0)
-          .attr("height", _height + MARGIN + _x.bandwidth());
+    _x.paddingInner(full? .2 : .4);
+    _y.range([0, _height + (full? 0 : _x.bandwidth())]);
+
+    _container.attr("transform", "translate(" + _margin.left + "," + _margin.top + ")");
+
+    _container.selectAll(".bar").select(".area")
+        .attr("x", function(d, i) { return _x(i); })
+        .attr("width", _x.step())
+        .style("fill", "transparent")
+        .attr("y", 0)
+        .attr("height", _height + MARGIN + _x.bandwidth());
 
     _container.selectAll(".bar").select(".background")
           .attr("x", function(d, i) { return _x(i); })
           .attr("y", function(d) { return _height + MARGIN; })
           .attr("width", _x.bandwidth())
           .attr("height", _x.bandwidth())
+          .attr("display", full? "block" : "none")
+
+    _container.selectAll(".bar").select("svg")
+      .attr("width", _x.bandwidth())
+      .attr("height", _x.bandwidth())
+      .attr("x", function(d, i) { return _x(i);})
+      .attr("y", _height + MARGIN)
+      .attr("display", full? "block" : "none")
 
     _container.selectAll(".bar").select(".total")
           .attr("x", function(d, i) { return _x(i); })
@@ -48,7 +61,7 @@ function ODS(svg, callbackIn, callbackOut) {
           .transition()
           .duration(_initialized? 500:0)
           .style("fill", _sub? "#cccccc" : null)
-          .attr("y", function(d) { return _height - _y(d); })
+          .attr("y", function(d) { return _height - _y(d) + (full? 0 : _x.bandwidth()); })
           .attr("height", function(d) { return _y(d); });
 
     _container.selectAll(".bar").select(".sub")
@@ -56,22 +69,17 @@ function ODS(svg, callbackIn, callbackOut) {
           .attr("width", _x.bandwidth())
           .transition()
           .duration(_initialized? 500:0)
-          .attr("y", function(d, i) { return _sub? _height - _y(_sub[i]) : _height; })
+          .attr("y", function(d, i) { return (_sub? _height - _y(_sub[i]) : _height) + (full? 0 : _x.bandwidth()); })
           .attr("height", function(d, i) { return _sub? _y(_sub[i]) : 0; });
 
     _container.selectAll(".bar").select("text")
         .text(function (d, i) { return _sub? _sub[i] : d;})
-          .attr("x", function(d, i) { return _x(i) + _x.bandwidth() / 2; })
-          .attr("dy", -6)
-          .transition()
-          .duration(_initialized? 500:0)
-          .attr("y", function(d) { return _height - _y(d); });
-
-    _container.selectAll(".bar").select("svg")
-      .attr("width", _x.bandwidth())
-      .attr("height", _x.bandwidth())
-      .attr("x", function(d, i) { return _x(i);})
-      .attr("y", _height + MARGIN)
+        .attr("x", function(d, i) { return _x(i) + _x.bandwidth() / 2; })
+        .attr("dy", -6)
+        .transition()
+        .duration(_initialized? 500:0)
+        .attr("y", function(d) { return _height - _y(d) + (full? 0 : _x.bandwidth()); })
+        .style("font-size", full? null : 10);
 
     _svg.attr("width", _width + _margin.left + _margin.right)
           .attr("height", _height + _margin.top + _margin.bottom + _x.bandwidth() + MARGIN);
@@ -135,10 +143,8 @@ function ODS(svg, callbackIn, callbackOut) {
 
   self.setSize = function(width, height) {
     _width = width - _margin.left - _margin.right;
-      _x.rangeRound([0, _width]);
-      _x.paddingInner(10 / _x.step());
-      _height = height - _margin.top - _margin.bottom - _x.bandwidth() - MARGIN;
-    _y.range([0, _height]);
+    _x.rangeRound([0, _width]);
+    _height = height - _margin.top - _margin.bottom - _x.bandwidth() - MARGIN;
   }
 
   function init(svg, callbackIn, callbackOut) {
