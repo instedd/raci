@@ -1,5 +1,5 @@
-#filters
-  = form_tag public_projects_path, method: :get, html: {name: "filter-form"} do
+= form_tag public_projects_path, method: :get, html: {name: "filter-form"} do
+  #filters
     .row#sdg-filters
       .col.s12.center-align
         - SustainableDevelopmentGoal.all.each do |goal|
@@ -33,59 +33,12 @@
         = check_box_tag :legally_formed, true, @filters.legally_formed
         = label_tag :legally_formed, "Inscripción legal"
 
-.count= pluralize(@projects.count, "proyecto")
-- @projects.each do |project|
-  - org = project.organization
-  .row.project-line
-    .col.l2.hide-on-med-and-down
-      = image_tag "/uploads/#{org.logo}", class: "org-logo" if org.logo
-    .col.l7.m8.s12
-      .row#title
-        .col.s12
-          .title= project.name
-          .organization
-            de
-            = org.name
-      .row
-        .col.s12.sdgs
-          - project.project_goals.map{|pg| pg.sustainable_development_goal }.each do |goal|
-            - pp_sdg(goal)
-      .row
-        .col.s12
-          = project.description
-      .row.project-details
-        .col.s4
-          %i.material-icons location_on
-          = names_for(project.locations)
-        .col.s4
-          %i.material-icons people
-          = names_for(project.populations)
-        .col.s4
-          %i.material-icons today
-          - if project.start_date.try(:year) == project.end_date.try(:year)
-            = project.start_date.try(:year)
-          - else
-            = project.start_date.try(:year)
-            \-
-            = project.end_date.try(:year)
-    #contact-details.col.l3.m4.hide-on-small-only
-      - unless org.email.blank?
-        .row
-          .col.s12
-            %i.material-icons email
-            = org.email
-      - unless org.telephone_number.blank?
-        .row
-          .col.s12
-            %i.material-icons phone
-            = org.telephone_number
-      - unless org.twitter.blank?
-        .row
-          .col.s12
-            %i.extra-icons.twitter
-            = org.twitter
-      - unless org.facebook.blank?
-        .row
-          .col.s12
-            %i.extra-icons.facebook
-            = org.facebook
+  = render 'public_projects_page', projects: @projects, total: @total
+
+  .row
+    .col.s12.center-align
+      = hidden_field_tag :page, @filters.page, id: "page"
+      - unless @filters.page.to_i == 1
+        = link_to "Volver", '#', class: 'btn btn-flat btn-large', id: "previous"
+      - unless @filters.page.to_i == (@total.to_f / @page_size).ceil
+        = link_to "Más resultados", '#', class: 'btn btn-large', id: "more-results"

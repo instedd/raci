@@ -7,4 +7,5 @@ class ProjectFilter
   attr_accessor :name
   attr_accessor :legally_formed
   attr_accessor :sustainable_development_goal
+  attr_accessor :page
 end

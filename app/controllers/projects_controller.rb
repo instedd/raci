@@ -69,7 +69,10 @@ class ProjectsController < ApplicationController
 
   def public
     @filters = filters_from_params
-    @projects = Project.apply(@filters)
+    @page_size = 15
+    result = Project.apply(@filters, @page_size)
+    @projects = result[:results]
+    @total = result[:total]
   end
 
   def dashboard
@@ -116,7 +119,8 @@ class ProjectsController < ApplicationController
 
     def filters_from_params
       ProjectFilter.new start_date: params[:start_date], end_date: params[:end_date], legally_formed: params[:legally_formed],
-        location: params[:location], population: params[:population], name: params[:name], sustainable_development_goal: params[:sustainable_development_goal]
+        location: params[:location], population: params[:population], name: params[:name], sustainable_development_goal: params[:sustainable_development_goal],
+        page: params[:page].try(:to_i) || 1
     end
 
     def verify_organization

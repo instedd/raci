@@ -14,4 +14,15 @@ $(document).on('turbolinks:load', function(){
       $('form').submit()
     }
   })
+
+  $('#more-results').on('click', function(e, el){
+    $('#page').val(parseInt($('#page').val()) + 1)
+    $('form').submit()
+  })
+
+  $('#previous').on('click', function(e, el){
+    $('#page').val(parseInt($('#page').val()) - 1)
+    $('form').submit()
+  })
+
 })

@@ -15,7 +15,7 @@ class Project < ApplicationRecord
     project_goals.any?{|pg| pg.goal == id.to_i}
   end
 
-  def self.apply(filters)
+  def self.apply(filters, page_size)
     search = published.eager_load(:organization).includes(:project_goals).includes(:locations).includes(:populations)
     search = search.where("organizations.accepted = ?", true)
     search = search.where("locations.name ILIKE (?)", "%#{filters.location}%") if filters.location.present?
@@ -26,7 +26,9 @@ class Project < ApplicationRecord
     search = search.where("organizations.legally_formed = ?", filters.legally_formed) if filters.legally_formed.present?
     search = search.where("projects.name ILIKE (?)", "%#{filters.name}%") if filters.name.present?
     ids = search.select("projects.id","organization_id").map{|r| r.id}
-    where("projects.id IN (?)", ids).eager_load(:organization).includes(:project_goals).includes(:locations).includes(:populations)
+    offset = (filters.page - 1) * page_size if filters.page.present?
+    {results: where("projects.id IN (?)", ids).eager_load(:organization).includes(:project_goals).includes(:locations).includes(:populations).limit(page_size).offset(offset),
+      total: where("projects.id IN (?)", ids).count()}
   end
 
   def self.categorization_by_sdg(projects)
