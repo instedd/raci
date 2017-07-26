@@ -1,24 +1,39 @@
-# README
+# SDG Platform
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Platform with information on UN Sustainable Development Goals and a database of social development projects adding to the fullfilment of each goal. 
 
-Things you may want to cover:
+## Development setup
 
-* Ruby version
+Instructions for setting up a development environment.
 
-* System dependencies
+1. Install ruby 2.3.1. If using rbenv, run:
+    ```bash
+    $ rbenv install 2.3.1
+    $ rbenv shell 2.3.1
+    $ gem install bundler
+    ```
 
-* Configuration
+2. Install project dependencies
+    ```bash
+    $ bundle install
+    ```
 
-* Database creation
+3. Create Postgres database
+    ```bash
+    $ bundle exec rake db:create
+    $ bundle exec rake db:migrate
+    ```
 
-* Database initialization
+4. Optionally run seeds for default users, Argentina provinces, and population groups
+    ```bash
+    $ bundle exec rake db:seed
+    ```
 
-* How to run the test suite
+5. Start the server and open a browser at `localhost:3000`
+    ```bash
+    $ bundle exec rails server
+    ```
 
-* Services (job queues, cache servers, search engines, etc.)
+## Deployment
 
-* Deployment instructions
-
-* ...
+A Docker image is available at https://hub.docker.com/r/instedd/raci/.
