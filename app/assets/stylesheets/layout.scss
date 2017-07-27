@@ -13,18 +13,34 @@ nav {
     align-items: center;
     img {
       &.raci { height: 36px; }
-      &.sdg {
-        height: 43px;
-      }
       &.sdg-mobile {
         height: 50px;
       }
+      &.sdg {
+        height: 43px;
+      }
+    }
+    .slogan {
+      display: inline-block;
+      font-size: 14px;
+      width: 50%;
+      line-height: 18px;
+      font-weight: 300;
+      color: $footer-font;
     }
     #logo-separator {
       border-left: #C0C0C0 solid 1px;
       height: 60px;
       display: inline-block;
       margin: 0 17px 0 21px;
+    }
+  }
+  .sdg-logo {
+    display: flex;
+    align-items: center;
+    height: 85px;
+    img.sdg {
+      height: 43px;
     }
   }
   .button-collapse {
@@ -75,7 +91,7 @@ footer.page-footer {
 
   .row {
     margin-bottom: 5px;
-  
+
     &.copyright {
       margin-top: 15px;
     }

@@ -8,6 +8,7 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
+-show_menu = user_signed_in? && !(params[:controller] == 'projects' && (params[:action] == 'public' || params[:action] == 'dashboard')) && !(params[:controller] == 'sustainable_development_goals') && !(params[:controller] == 'application')
 %body{"data-feedly-mini" => "yes", "data-gr-c-s-loaded" => "true"}
   #full-content
     %nav.white{:role => "navigation"}
@@ -17,13 +18,22 @@
             #logo-container.brand-logo
               = image_tag 'RACI-logo.png', class: 'raci'
               #logo-separator
-              = image_tag 'sdg_logo.png', class: 'sdg hide-on-small-only'
-              = image_tag 'sdg_logo_mobile.png', class: 'sdg-mobile hide-on-med-and-up'
-          - if user_signed_in?
+              - unless show_menu
+                .slogan.hide-on-med-and-down
+                  El primer espacio que visibiliza los proyectos de todas las organizaciones sociales de Argentina
+                  %br
+                  y su contribución al cumplimiento de los Objetivos de Desarrollo Sostenible
+              = image_tag 'sdg_logo.png', class: 'sdg hide-on-med-and-down' if show_menu
+              = image_tag 'sdg_logo_mobile.png', class: 'sdg-mobile hide-on-large-only'
+          - if show_menu
             %ul.right.hide-on-med-and-down
               = render 'layouts/nav_links'
             %ul#nav-mobile.side-nav{:style => "transform: translateX(-100%);"}
               = render 'layouts/nav_links'
+          - else
+            .right.hide-on-med-and-down.sdg-logo
+              = image_tag 'sdg_logo.png', class: 'sdg hide-on-small-only'
+          - if user_signed_in?
             %a.button-collapse{"data-activates" => "nav-mobile", :href => "#"}
               %i.material-icons menu
     - goal = @goal ? "body-ods#{@goal.number}" : ""
