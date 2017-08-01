@@ -20,20 +20,24 @@ nav {
         height: 43px;
       }
     }
-    .slogan {
-      display: inline-block;
-      font-size: 14px;
-      width: 50%;
-      line-height: 18px;
-      font-weight: 300;
-      color: $footer-font;
-    }
     #logo-separator {
       border-left: #C0C0C0 solid 1px;
       height: 60px;
       display: inline-block;
       margin: 0 17px 0 21px;
     }
+  }
+  .slogan {
+    display: inline-block;
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 300;
+    color: $footer-font;
+  }
+  .admin-link {
+    i { display: inline-block; }
+    margin-left: 20px;
+    margin-top: 4px;
   }
   .sdg-logo {
     display: flex;

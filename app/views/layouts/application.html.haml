@@ -20,7 +20,9 @@
               #logo-separator
               - unless show_menu
                 .slogan.hide-on-med-and-down
-                  El primer espacio que visibiliza los proyectos de todas las organizaciones sociales de Argentina
+                  El primer espacio que visibiliza los proyectos
+                  %br
+                  de todas las organizaciones sociales de Argentina
                   %br
                   y su contribución al cumplimiento de los Objetivos de Desarrollo Sostenible
               = image_tag 'sdg_logo.png', class: 'sdg hide-on-med-and-down' if show_menu
@@ -31,6 +33,10 @@
             %ul#nav-mobile.side-nav{:style => "transform: translateX(-100%);"}
               = render 'layouts/nav_links'
           - else
+            .right.hide-on-med-and-down.admin-link
+              = link_to admin_path do
+                %i.material-icons person
+                Ingresar
             .right.hide-on-med-and-down.sdg-logo
               = image_tag 'sdg_logo.png', class: 'sdg hide-on-small-only'
           - if user_signed_in?
