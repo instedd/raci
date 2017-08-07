@@ -38,6 +38,10 @@
         %i.material-icons search
         Ir al listado de proyectos
 
+      = link_to new_user_registration_path, class: "btn btn-large", id: "add-your-org" do
+        %i.material-icons person_add
+        Agregá tu organización
+
 :javascript
   var projects_by_location = #{@by_location.to_json};
   var projects_by_sdg = #{@by_sdg.to_json};
