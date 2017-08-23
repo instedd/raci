@@ -76,7 +76,7 @@ class ProjectsController < ApplicationController
   end
 
   def dashboard
-    all_projects = Project.published.eager_load(:project_goals).all
+    all_projects = Project.published.eager_load(:project_goals).includes(:locations).includes(:populations).all
     @by_sdg = Project.categorization_by_sdg(all_projects)
     @by_population = Project.categorization_by_population(all_projects)
     @by_time = Project.categorization_by_upload_time(all_projects)
