@@ -31,7 +31,7 @@ function Projects(svg) {
 	  	_svg.attr("width", _width + _margin.left + _margin.right)
 	    		.attr("height", _height + _margin.top + _margin.bottom);
 	  	_container.attr("transform", "translate(" + _margin.left + "," + _margin.top + ")");
-	  	_xAxis.call(d3.axisBottom().scale(_x).ticks(d3.timeMonth.every(3)))
+	  	_xAxis.call(d3.axisBottom().scale(_x).ticks(d3.timeWeek.every(1)))
 	  		.attr("transform", "translate(0," + _height + ")");
 		_xAxis.selectAll(".tick text").style("font-size", 14).style("fill", "#666666").style("font-family", "Roboto").style("text-anchor", "start");
 	  	_yAxis.call(d3.axisRight().scale(_y).ticks(5).tickSizeInner(_width).tickPadding(-_width));

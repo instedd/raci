@@ -88,7 +88,7 @@ class Project < ApplicationRecord
   def self.categorization_by_upload_time(projects)
     res = {timeline_counts: Hash.new(0), by_sdg: {}, by_location: {}, by_population: {}}
     projects.each do |p|
-      date = p.month_of_upload
+      date = p.week_of_upload
       res[:timeline_counts][date] += 1
       p.populations.each do |pop|
         res[:by_population][pop.name] = Hash.new(0) unless res[:by_population].has_key?(pop.name)
@@ -110,8 +110,9 @@ class Project < ApplicationRecord
     res
   end
 
-  def month_of_upload()
-    "#{created_at.year}-#{created_at.month}"
+  def week_of_upload()
+    date = created_at.beginning_of_week
+    "#{date.year}-#{date.month}-#{date.day}"
   end
 
 end

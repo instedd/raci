@@ -76,11 +76,14 @@ class ProjectsController < ApplicationController
   end
 
   def dashboard
-    all_projects = Project.published.eager_load(:project_goals).includes(:locations).includes(:populations).all
+    all_projects = Project.published.eager_load(:project_goals).includes(:locations).includes(:populations)
+    latest_projects = all_projects.where("projects.created_at >= ?",3.months.ago)
+    all_projects = all_projects.all
+    @by_time = Project.categorization_by_upload_time(all_projects)
     @by_sdg = Project.categorization_by_sdg(all_projects)
     @by_population = Project.categorization_by_population(all_projects)
-    @by_time = Project.categorization_by_upload_time(all_projects)
-    @by_location = Project.categorization_by_location(all_projects)
+    @by_location = Project.categorization_by_location(latest_projects.all)
+
   end
 
   private
