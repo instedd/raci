@@ -76,7 +76,7 @@ class ProjectsController < ApplicationController
   end
 
   def dashboard
-    all_projects = Project.published.eager_load(:project_goals).includes(:locations).includes(:populations)
+    all_projects = Project.published.includes(:project_goals).includes(:locations).includes(:populations)
     latest_projects = all_projects.where("projects.created_at >= ?",3.months.ago)
     all_projects = all_projects.all
     @by_time = Project.categorization_by_upload_time(all_projects)
