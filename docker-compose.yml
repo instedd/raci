@@ -28,4 +28,4 @@ services:
       - bundle:/usr/local/bundle
       - .:/app
     ports:
-      - 3000
+      - 3000:3000
