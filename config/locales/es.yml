@@ -30,12 +30,6 @@ es:
         locations: ubicación
         populations: poblaciones afectadas
         population_ids: poblaciones afectadas
-    errors:
-      messages:
-        record_invalid: "La validación falló: %{errors}"
-        restrict_dependent_destroy:
-          has_one: No se puede eliminar el registro porque existe un %{record} dependiente
-          has_many: No se puede eliminar el registro porque existen %{record} dependientes
     date:
       abbr_day_names:
       - dom
@@ -168,6 +162,10 @@ es:
           one: "no tiene la longitud correcta (1 carácter exactos)"
           other: "no tiene la longitud correcta (%{count} caracteres exactos)"
         other_than: debe ser distinto de %{count}
+        record_invalid: "La validación falló: %{errors}"
+        restrict_dependent_destroy:
+          has_one: No se puede eliminar el registro porque existe un %{record} dependiente
+          has_many: No se puede eliminar el registro porque existen %{record} dependientes
       template:
         body: 'Se encontraron problemas con los siguientes campos:'
         header:
