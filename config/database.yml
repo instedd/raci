@@ -20,6 +20,7 @@ default: &default
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: <%= ENV["DATABASE_HOST"] %>
 
 development:
   <<: *default
@@ -78,8 +79,3 @@ test:
 production:
   <<: *default
   url: <%= ENV['DATABASE_URL'] %>
-#
-# production:
-#   database: raci_production
-#   username: raci
-#   password: <%= ENV['RACI_DATABASE_PASSWORD'] %>
