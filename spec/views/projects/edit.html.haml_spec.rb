@@ -8,7 +8,9 @@ RSpec.describe "projects/edit", type: :view do
       :name => "MyString",
       :description => "MyText",
       :organization => create_organization({user: @user}),
-      :published => false
+      :published => false,
+      :start_date => Time.now,
+      :end_date => Time.now,
     ))
   end
 
@@ -21,7 +23,7 @@ RSpec.describe "projects/edit", type: :view do
 
       assert_select "textarea#project_description[name=?]", "project[description]"
 
-      assert_select "input#project_location[name=?]", "project[location]"
+      assert_select "select#project_location_ids[name=?]", "project[location_ids][]"
     end
   end
 end

@@ -21,7 +21,7 @@ RSpec.describe "projects/new", type: :view do
 
       assert_select "textarea#project_description[name=?]", "project[description]"
 
-      assert_select "input#project_location[name=?]", "project[location]"
+      assert_select "select#project_location_ids[name=?]", "project[location_ids][]"
     end
   end
 end
